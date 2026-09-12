@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Four Generations from Taoyuan</title>
+<meta name="description" content="An oral history of one landlord family from Taoyuan County, Hunan, from 1910 to today, told by its fourth generation.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#eef4ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b2630" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Sofia+Sans+Extra+Condensed:wght@600;800&family=Noto+Sans+SC:wght@700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='7' width='28' height='18' rx='2' fill='%231d2836'/%3E%3Ccircle cx='21' cy='16' r='3.5' fill='%23d5e3d0'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#story">Skip to the story</a>
+
+<header class="rail" id="rail">
+  <a class="rail__home" href="#top">Four Generations from Taoyuan</a>
+  <nav aria-label="Sections">
+    <ol class="rail__stops">
+      <li><a href="#g1" data-stop="g1">1910</a></li>
+      <li><a href="#g2" data-stop="g2">1939</a></li>
+      <li><a href="#g3" data-stop="g3">1973</a></li>
+      <li><a href="#g4" data-stop="g4">2000s</a></li>
+      <li><a href="#routes" data-stop="routes">Routes</a></li>
+      <li><a href="#family" data-stop="family">Family</a></li>
+      <li><a href="#words" data-stop="words">Words</a></li>
+      <li><a href="#method" data-stop="method">Method</a></li>
+    </ol>
+    <span class="rail__flag" aria-hidden="true"></span>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="ticket ticket--hero">
+      <figure class="ticket__stub">
+        <img src="images/plowing-buffalo-changde.jpg" width="1720" height="1104" fetchpriority="high" alt="A farmer in a straw hat plows a field behind a water buffalo, with a river and a town behind them.">
+        <figcaption>Changde, Hunan, c. 1900-1919. A period photograph, not of the Li family.</figcaption>
+      </figure>
+      <div class="ticket__body">
+        <dl class="route">
+          <div class="route__leg">
+            <dt>From</dt>
+            <dd><span class="zh" lang="zh-Hans">桃源</span> Taoyuan County, Hunan</dd>
+          </div>
+          <div class="route__leg">
+            <dt>To</dt>
+            <dd><span class="zh" lang="zh-Hans">滑铁卢</span> Waterloo, Ontario</dd>
+          </div>
+        </dl>
+        <h1 id="hero-title">Four generations of the Li family</h1>
+        <p class="hero__sub">One Hunan landlord family, from 1910 to today, told by its fourth generation.</p>
+        <div class="hero__foot">
+          <a class="button" href="#story">Read the story</a>
+          <p class="punch-field"><span class="punch" aria-hidden="true"></span>1910 to 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro" id="story" aria-labelledby="intro-title">
+    <h2 id="intro-title" class="visually-hidden">About this history</h2>
+    <p class="lede">For more than a hundred years, one family from the countryside of Taoyuan County in Hunan has lived through every turn of modern China: the end of the empire, war, revolution, reform, and the long boom. None of them chose the times. Each generation made its choices inside them.</p>
+    <p>I am the fourth generation. This site records what my family has told me, before it exists only in memory. It does not judge the events it describes. It follows what they did to four lives.</p>
+    <p class="note">Names are pseudonyms. Photographs are period images from public archives, used because family photographs are not available; none of them show the Li family.</p>
+  </section>
+
+  <section class="lifelines" aria-labelledby="lifelines-title">
+    <h2 id="lifelines-title">Four lives across one century</h2>
+    <p class="section-sub">Select a mark to read what happened. Grey bands are national events; dashed lines are years the family account does not record.</p>
+    <div class="chart-scroll">
+      <div class="chart" id="chart">
+        <div class="chart__axis" aria-hidden="true"></div>
+        <div class="chart__eras" id="chart-eras"></div>
+        <div class="chart__rows" id="chart-rows"></div>
+      </div>
+    </div>
+    <div class="chart__detail" id="chart-detail" aria-live="polite">
+      <p class="chart__detail-year">1910</p>
+      <p class="chart__detail-text">Select any mark on the chart above.</p>
+    </div>
+  </section>
+
+  <article class="chapter chapter--g1" id="g1" aria-labelledby="g1-title">
+    <header class="stub-head">
+      <p class="stub-head__gen"><span class="visually-hidden">Generation </span>1<small aria-hidden="true">of 4</small></p>
+      <h2 id="g1-title">The great-grandfather, born 1910</h2>
+      <p class="stub-head__name">Li Hanqing <span class="zh" lang="zh-Hans">李翰卿</span></p>
+    </header>
+    <div class="chapter__split">
+      <div class="prose">
+        <p>My great-grandfather was born in 1910, a year before the revolution that ended two thousand years of imperial rule. The news of a republic changed little in the villages of Taoyuan. The countryside still ran on small family farms, and order was kept by local gentry and by the clans.</p>
+        <p>His parents had built up some property through hard work and careful spending. That head start, and a country that was slowly opening, let him do what his parents could not: he went on to higher education. He came back with new ideas about running an estate and the means to act on them.</p>
+        <p>The family’s holdings grew, mostly in farmland, and the Li household became one of the known landlord families of the area. Between the late 1930s and the late 1960s he had seven children. One son died young.</p>
+      </div>
+      <figure class="plate plate--tall">
+        <img src="images/taoyuan-farmhouse-1902.jpg" width="640" height="493" loading="lazy" alt="A thatched farmhouse behind terraced rice fields, with a figure holding a parasol in the yard.">
+        <figcaption>A farmhouse in Taoyuan, photographed by Torii Ryūzō in 1902. Not the Li family home.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="chapter chapter--g2" id="g2" aria-labelledby="g2-title">
+    <header class="stub-head">
+      <p class="stub-head__gen"><span class="visually-hidden">Generation </span>2<small aria-hidden="true">of 4</small></p>
+      <h2 id="g2-title">The eldest son, born 1939</h2>
+      <p class="stub-head__name">Li Zhiyuan <span class="zh" lang="zh-Hans">李致远</span></p>
+    </header>
+    <figure class="plate plate--band">
+      <img src="images/land-reform-law-1950.jpg" width="600" height="367" loading="lazy" alt="Villagers crowd around a man holding up a printed copy of the Land Reform Law.">
+      <figcaption>A man reads out the Land Reform Law of the People’s Republic of China, 1950. Location unknown; not the Li family.</figcaption>
+    </figure>
+    <div class="chapter__aside-grid">
+    <div class="prose prose--wide">
+      <p>My grandfather was the eldest son. He was born in 1939, when the family was at its height, and he grew up in a comfortable house with enough of everything.</p>
+      <p>In 1949 the civil war ended and the People’s Republic was founded. The years of class struggle that followed turned the family’s position upside down. As a landlord, my great-grandfather was sent to prison. The house and the land were confiscated. A family that had stood near the top of local society now stood near the bottom, and it went through one political campaign after another. For years the household had no settled place.</p>
+      <p>My grandfather and his elder sister eventually left home on their own, he to study in Wuhan and she in Changsha. The four younger siblings stayed and worked the land.</p>
+      <p>In the early 1980s, as the country turned toward reform and opening, the government’s restitution policy reached the family. Part of the property was returned, and they moved from the village into the local town. My grandfather and his sister, both university educated, stayed in Wuhan and Changsha, found work, married, and raised children there. The second son farmed in the home village. The second daughter married young and moved far away. The third son and third daughter found work in the town.</p>
+    </div>
+    <aside aria-label="Education">
+      <p class="pull">Only the two eldest children had been born early enough to go to school. The four younger ones never had the chance.</p>
+    </aside>
+    </div>
+    <div class="pair">
+      <figure class="plate">
+        <img src="images/wuhan-no2-school-1950s.jpg" width="1080" height="773" loading="lazy" alt="The gate of a school in Wuhan in the 1950s, with a painted sign above it.">
+        <figcaption>Wuhan: the gate of Wuhan No. 2 High School in the 1950s.</figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="images/old-changsha-panorama.jpg" width="1810" height="630" loading="lazy" alt="Tiled rooftops and a stretch of city wall in old Changsha.">
+        <figcaption>Changsha: rooftops and the old city wall, from an archive print shown at the Changsha City Museum.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="chapter chapter--g3" id="g3" aria-labelledby="g3-title">
+    <header class="stub-head">
+      <p class="stub-head__gen"><span class="visually-hidden">Generation </span>3<small aria-hidden="true">of 4</small></p>
+      <h2 id="g3-title">My parents’ generation, born 1973</h2>
+    </header>
+    <div class="chapter__split chapter__split--flip">
+      <figure class="plate plate--wide">
+        <img src="images/street-1984.jpg" width="1400" height="935" loading="lazy" alt="A busy tree-lined street market with shoppers carrying baskets, a girl in a red jacket in the foreground.">
+        <figcaption>A street market in Hangzhou, 1984. Photograph by BabelStone, CC BY-SA 4.0.</figcaption>
+      </figure>
+      <div class="prose">
+        <p>My parents’ generation was born in 1973. By the time they were old enough for school, the country had reopened its universities and begun to open to the world, so they received a complete education from primary school through university.</p>
+        <p>When they started work, the economy was growing fast. Over the years they rose to become the experienced core of their workplaces and joined the new urban middle class. Theirs was the generation that collected what the times had to offer.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter chapter--g4" id="g4" aria-labelledby="g4-title">
+    <header class="stub-head">
+      <p class="stub-head__gen"><span class="visually-hidden">Generation </span>4<small aria-hidden="true">of 4</small></p>
+      <h2 id="g4-title">My generation, born in the 2000s</h2>
+    </header>
+    <div class="ticket ticket--leg" role="group" aria-label="Wuhan to Waterloo">
+      <figure class="plate">
+        <img src="images/wuhan-skyline-2018.jpg" width="1800" height="1025" loading="lazy" alt="The Wuhan skyline across East Lake.">
+        <figcaption>Wuhan from the East Lake Greenway, 2018. Photograph by Majorantarktis, CC BY-SA 4.0.</figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="images/waterloo-campus.jpg" width="1400" height="788" loading="lazy" alt="Buildings and green lawns on the University of Waterloo main campus.">
+        <figcaption>The University of Waterloo, 2025. Photograph by JFVoll, CC BY-SA 4.0.</figcaption>
+      </figure>
+    </div>
+    <div class="chapter__aside-grid">
+    <div class="prose prose--wide">
+      <p>My generation was born in the early 2000s, into a China growing at full speed. We have never been short of things. We have been short of room: every step, from school places to jobs, is a competition, and people now call it <em>neijuan</em>, involution.</p>
+      <p>China is also far more connected to the rest of the world than it was for my parents. With their support, many of us have gone abroad to study, and some of us will change not only country but identity. I went from Wuhan to Montreal, then to Stanstead, and now to Waterloo.</p>
+      <p>My great-grandfather’s education made the family. Two generations later, education was the one thing my grandfather kept when everything else was taken. It is the thread I am still following.</p>
+    </div>
+    <aside class="ticket" aria-label="My route abroad">
+      <ol class="itinerary">
+        <li><b>Wuhan</b><span>Where my grandfather settled</span></li>
+        <li><b>Montreal</b><span>Quebec</span></li>
+        <li><b>Stanstead</b><span>Quebec</span></li>
+        <li><b>Waterloo</b><span>Ontario, now</span></li>
+      </ol>
+    </aside>
+    </div>
+  </article>
+
+  <section class="routes" id="routes" aria-labelledby="routes-title">
+    <h2 id="routes-title">Where the family went</h2>
+    <p class="section-sub">Choose a journey. Village locations are approximate.</p>
+    <div class="routes__layout">
+      <ol class="legs" id="legs"></ol>
+      <div class="map-frame">
+        <div id="map" aria-label="Map of the family’s routes from Taoyuan County"></div>
+        <p class="map-fallback" id="map-fallback" hidden>The map could not load. The journeys are listed beside it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="family" aria-labelledby="family-title">
+    <h2 id="family-title">Seven children, seven directions</h2>
+    <p class="section-sub">Where each of my great-grandfather’s children ended up. Birth order follows the family account; birth years other than 1939 are not recorded.</p>
+    <div class="tree" id="tree"></div>
+  </section>
+
+  <section class="words" id="words" aria-labelledby="words-title">
+    <h2 id="words-title">The words each generation lived by</h2>
+    <p class="section-sub">Key terms from the family account, grouped by the generation they belong to. They are my selection, not a count from recorded interviews.</p>
+    <div class="coupons" id="coupons"></div>
+  </section>
+
+  <section class="method" id="method" aria-labelledby="method-title">
+    <h2 id="method-title">How this was made</h2>
+    <div class="method__cols">
+      <div class="prose">
+        <h3>Sources</h3>
+        <p>The narrative comes from the family’s own account, written down by me in 2026. Dates given as years (1910, 1939, 1973) come from that account. Where the account gives no date, for example the year my great-grandfather was imprisoned, the site does not supply one.</p>
+        <h3>What is substituted</h3>
+        <p>There are no family photographs, household registers, or letters in this version. Each photograph is a public-domain or openly licensed image from the same region or era, captioned with its real place and date. Family names are pseudonyms.</p>
+        <h3>What comes next</h3>
+        <p>The next step is recorded interviews with each living generation, asking everyone the same questions: why they moved, what they feared, what they valued. Transcripts would let the word section count what people actually say, instead of relying on my selection.</p>
+        <h3>A note on perspective</h3>
+        <p>This history is told by the youngest generation. It is shaped by what I was told and by what the older generations chose to pass on. That filtering is part of the subject, not a flaw to hide.</p>
+      </div>
+      <div class="credits">
+        <h3>Photograph credits</h3>
+        <ul id="credits-list"></ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Four Generations from Taoyuan. Research and writing by Ziyu Wang, 2026.</p>
+  <a href="#top">Back to the start</a>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<script src="main.js" defer></script>
+</body>
+</html>
