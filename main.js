@@ -56,10 +56,10 @@
     },
     {
       name: "My generation", sub: "Generation 4, b. 2000s",
-      life: [[2003, 2026, "known"]],
+      life: [[2007, 2026, "known"]],
       marks: [
-        { year: 2003, label: "Early 2000s", text: "Born into fast growth and fierce competition, the years people now call involution." },
-        { from: 2019, to: 2026, label: "Recent years", text: "With family support, study abroad: from Wuhan to Montreal, Stanstead, and Waterloo." }
+        { year: 2007, label: "Early 2000s", text: "Born into fast growth and fierce competition, the years people now call involution." },
+        { from: 2021, to: 2026, label: "Recent years", text: "With family support, study abroad: from Wuhan to Montreal, Stanstead, and Waterloo." }
       ]
     },
     {
@@ -135,138 +135,6 @@
     if (buttons[0]) select(buttons[0], rows[0].marks[0]);
   }
 
-  /* ---------------- Routes map ---------------- */
-
-  const places = {
-    village: { name: "Home village", note: "approximate", ll: [28.79, 111.33] },
-    town: { name: "Local town", note: "approximate", ll: [28.905, 111.49] },
-    changsha: { name: "Changsha", ll: [28.228, 112.939] },
-    wuhan: { name: "Wuhan", ll: [30.593, 114.305] },
-    montreal: { name: "Montreal", ll: [45.502, -73.567 + 360] },
-    stanstead: { name: "Stanstead", ll: [45.020, -72.099 + 360] },
-    waterloo: { name: "Waterloo", ll: [43.464, -80.520 + 360] }
-  };
-
-  const legs = [
-    {
-      title: "Taoyuan to Wuhan",
-      text: "The eldest son leaves home to study, and stays to work and raise a family. Year not recorded.",
-      stops: ["village", "wuhan"]
-    },
-    {
-      title: "Taoyuan to Changsha",
-      text: "The eldest daughter leaves to study in the provincial capital and settles there.",
-      stops: ["village", "changsha"]
-    },
-    {
-      title: "Village to town",
-      text: "Early 1980s. Part of the property is returned and the family moves into the local town.",
-      stops: ["village", "town"]
-    },
-    {
-      title: "Wuhan to Waterloo",
-      text: "The fourth generation studies abroad: Montreal, then Stanstead, then Waterloo.",
-      stops: ["wuhan", "montreal", "stanstead", "waterloo"]
-    }
-  ];
-
-  function arc(a, b, bend) {
-    const [lat1, lng1] = a;
-    const [lat2, lng2] = b;
-    const midLat = (lat1 + lat2) / 2;
-    const midLng = (lng1 + lng2) / 2;
-    const dLat = lat2 - lat1;
-    const dLng = lng2 - lng1;
-    const cLat = midLat + dLng * bend;
-    const cLng = midLng - dLat * bend;
-    const pts = [];
-    for (let t = 0; t <= 1.0001; t += 0.04) {
-      const u = 1 - t;
-      pts.push([u * u * lat1 + 2 * u * t * cLat + t * t * lat2, u * u * lng1 + 2 * u * t * cLng + t * t * lng2]);
-    }
-    return pts;
-  }
-
-  function buildRoutes() {
-    const list = document.getElementById("legs");
-    const mapEl = document.getElementById("map");
-    const fallback = document.getElementById("map-fallback");
-    if (!list) return;
-
-    const buttons = legs.map((leg, i) => {
-      const li = el("li");
-      const btn = el("button", "leg",
-        `<span class="leg__num" aria-hidden="true">${i + 1}</span><span class="leg__title">${leg.title}</span><span class="leg__text">${leg.text}</span>`);
-      btn.type = "button";
-      btn.setAttribute("aria-pressed", "false");
-      li.appendChild(btn);
-      list.appendChild(li);
-      return btn;
-    });
-
-    if (typeof L === "undefined") {
-      fallback.hidden = false;
-            buttons.forEach((b, i) => b.addEventListener("click", () => {
-        buttons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-      }));
-      return;
-    }
-
-    const ink = css("--ink");
-    const violet = css("--violet");
-    const face = css("--face");
-
-    const map = L.map(mapEl, { scrollWheelZoom: false, worldCopyJump: false, zoomSnap: 0.25 });
-    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
-      attribution: "Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors",
-      maxZoom: 16
-    }).addTo(map);
-
-    const layers = legs.map((leg) => {
-      const group = L.featureGroup();
-      for (let i = 0; i < leg.stops.length - 1; i++) {
-        const a = places[leg.stops[i]].ll;
-        const b = places[leg.stops[i + 1]].ll;
-        L.polyline(arc(a, b, 0.18), { color: ink, weight: 2.5, dashArray: "2 7", lineCap: "round", opacity: 0.55 }).addTo(group);
-      }
-      return group;
-    });
-
-    const active = L.layerGroup().addTo(map);
-    const markerFor = (key, highlight) => {
-      const p = places[key];
-      return L.circleMarker(p.ll, {
-        radius: highlight ? 7 : 5, color: highlight ? violet : ink, weight: 2.5,
-        fillColor: face, fillOpacity: 1
-      }).bindTooltip(p.note ? `${p.name} <small>(${p.note})</small>` : p.name, {
-        permanent: true, direction: "right", offset: [8, 0], className: "place-label"
-      });
-    };
-
-    function show(index) {
-      buttons.forEach((b, i) => b.setAttribute("aria-pressed", String(i === index)));
-      active.clearLayers();
-      const leg = legs[index];
-      const pts = [];
-      for (let i = 0; i < leg.stops.length - 1; i++) {
-        const a = places[leg.stops[i]].ll;
-        const b = places[leg.stops[i + 1]].ll;
-        const line = arc(a, b, 0.18);
-        pts.push(...line);
-        L.polyline(line, { color: violet, weight: 3.5, lineCap: "round" }).addTo(active);
-      }
-      leg.stops.forEach((k, i) => markerFor(k, i === 0 || i === leg.stops.length - 1).addTo(active));
-      const bounds = L.latLngBounds(pts);
-      const pad = leg.stops.includes("montreal") ? [40, 40] : [70, 70];
-      map.flyToBounds(bounds, { padding: pad, maxZoom: leg.stops.includes("town") ? 9 : 7, duration: reduceMotion ? 0 : 1.1 });
-    }
-
-    layers.forEach((g) => g.addTo(map));
-    map.fitBounds(L.latLngBounds([places.village.ll, places.wuhan.ll]), { padding: [70, 70] });
-    buttons.forEach((b, i) => b.addEventListener("click", () => show(i)));
-    show(0);
-  }
-
   /* ---------------- Family tree ---------------- */
 
   const children = [
@@ -302,63 +170,6 @@
     tree.appendChild(el("p", "tree__legend", "Only the eldest son and eldest daughter were old enough to be educated before 1949. The outlined card marks the line this site follows."));
   }
 
-  /* ---------------- Words ---------------- */
-
-  const words = [
-    {
-      gen: "Generation 1", years: "1910 onward",
-      items: [
-        ["乡绅", "xiāngshēn", "Local gentry, who kept order in the countryside"],
-        ["宗族", "zōngzú", "The clan, and its authority over families"],
-        ["勤俭持家", "qínjiǎn chíjiā", "Running a household by hard work and thrift"],
-        ["田产", "tiánchǎn", "Farmland as the measure of a family’s wealth"]
-      ]
-    },
-    {
-      gen: "Generation 2", years: "1939 onward",
-      items: [
-        ["地主", "dìzhǔ", "Landlord: the class label that decided the family’s fate"],
-        ["没收", "mòshōu", "Confiscated: the house and the land"],
-        ["颠沛流离", "diānpèi liúlí", "Uprooted, with no settled place to live"],
-        ["落实政策", "luòshí zhèngcè", "Restitution: the policy that returned part of the property"]
-      ]
-    },
-    {
-      gen: "Generation 3", years: "1973 onward",
-      items: [
-        ["改革开放", "gǎigé kāifàng", "Reform and opening"],
-        ["完整的教育", "wánzhěng de jiàoyù", "A complete education, school through university"],
-        ["中坚力量", "zhōngjiān lìliàng", "The experienced core of a workplace"],
-        ["城市中产", "chéngshì zhōngchǎn", "The urban middle class"]
-      ]
-    },
-    {
-      gen: "Generation 4", years: "2000s onward",
-      items: [
-        ["内卷", "nèijuǎn", "Involution: competition with no finish line"],
-        ["出国留学", "chūguó liúxué", "Going abroad to study"],
-        ["身份转变", "shēnfèn zhuǎnbiàn", "A change of identity, and of country"],
-        ["父母的支持", "fùmǔ de zhīchí", "Parents’ support, which makes leaving possible"]
-      ]
-    }
-  ];
-
-  function buildWords() {
-    const root = document.getElementById("coupons");
-    if (!root) return;
-    words.forEach((col) => {
-      const div = el("div", "coupon-col");
-      div.appendChild(el("h3", "", `${col.gen}<small>${col.years}</small>`));
-      const ul = el("ul");
-      col.items.forEach(([zh, py, en]) => {
-        ul.appendChild(el("li", "coupon",
-          `<span class="coupon__zh" lang="zh-Hans">${zh}</span><span class="coupon__py" lang="zh-Latn-pinyin">${py}</span><span class="coupon__en">${en}</span>`));
-      });
-      div.appendChild(ul);
-      root.appendChild(div);
-    });
-  }
-
   /* ---------------- Credits ---------------- */
 
   const credits = [
@@ -381,7 +192,7 @@
       ul.appendChild(li);
     });
     const note = el("li");
-    note.textContent = "Map tiles from Esri World Light Gray Canvas. Images resized and in some cases cropped.";
+    note.textContent = "Map tiles from Esri World Topographic Map. Images resized and in some cases cropped.";
     ul.appendChild(note);
   }
 
@@ -422,9 +233,6 @@
 
   buildChart();
   buildTree();
-  buildWords();
   buildCredits();
   buildRail();
-  if (document.readyState === "complete") buildRoutes();
-  else window.addEventListener("load", buildRoutes);
 })();

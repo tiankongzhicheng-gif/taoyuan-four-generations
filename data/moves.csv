@@ -1,0 +1,7 @@
+﻿id,person,with,from,to,year,approx,trigger,label,text
+m1,zhiyuan,,village,wuhan,1955,True,education,Taoyuan to Wuhan,"The eldest son leaves home alone to study in Wuhan, and stays to work and raise a family. Year not recorded."
+m2,zhiqing,,village,changsha,1956,True,education,Taoyuan to Changsha,The eldest daughter leaves home alone to study in Changsha and settles there. Year not recorded.
+m3,zhikang,zhimei,village,town,1982,True,restitution,Village to town,Early 1980s. Part of the property is returned and the family moves from the village into the local town.
+m4,g4,,wuhan,montreal,2021,True,study abroad,Wuhan to Montreal,The fourth generation goes abroad to study.
+m5,g4,,montreal,stanstead,2022,True,study abroad,Montreal to Stanstead,"Secondary school in Stanstead, Quebec."
+m6,g4,,stanstead,waterloo,2026,False,study abroad,Stanstead to Waterloo,"University in Waterloo, Ontario."

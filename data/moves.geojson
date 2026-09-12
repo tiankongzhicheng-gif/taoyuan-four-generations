@@ -1,0 +1,149 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      111.33,
+      28.79
+     ],
+     [
+      114.305,
+      30.593
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m1",
+    "person": "zhiyuan",
+    "year": 1955,
+    "approx": true,
+    "trigger": "education",
+    "label": "Taoyuan to Wuhan"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      111.33,
+      28.79
+     ],
+     [
+      112.939,
+      28.228
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m2",
+    "person": "zhiqing",
+    "year": 1956,
+    "approx": true,
+    "trigger": "education",
+    "label": "Taoyuan to Changsha"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      111.33,
+      28.79
+     ],
+     [
+      111.49,
+      28.905
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m3",
+    "person": "zhikang",
+    "year": 1982,
+    "approx": true,
+    "trigger": "restitution",
+    "label": "Village to town"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      114.305,
+      30.593
+     ],
+     [
+      -73.567,
+      45.502
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m4",
+    "person": "g4",
+    "year": 2021,
+    "approx": true,
+    "trigger": "study abroad",
+    "label": "Wuhan to Montreal"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -73.567,
+      45.502
+     ],
+     [
+      -72.099,
+      45.02
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m5",
+    "person": "g4",
+    "year": 2022,
+    "approx": true,
+    "trigger": "study abroad",
+    "label": "Montreal to Stanstead"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -72.099,
+      45.02
+     ],
+     [
+      -80.52,
+      43.464
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m6",
+    "person": "g4",
+    "year": 2026,
+    "approx": false,
+    "trigger": "study abroad",
+    "label": "Stanstead to Waterloo"
+   }
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+﻿id,name,zh,lat,lng,type,approx
+village,Home village,桃源县乡村,28.79,111.33,village,True
+town,Local town,桃源县城镇,28.905,111.49,town,True
+changsha,Changsha,长沙,28.228,112.939,city,False
+wuhan,Wuhan,武汉,30.593,114.305,city,False
+montreal,Montreal,蒙特利尔,45.502,-73.567,abroad,False
+stanstead,Stanstead,斯坦斯特德,45.02,-72.099,abroad,False
+waterloo,Waterloo,滑铁卢,43.464,-80.52,abroad,False

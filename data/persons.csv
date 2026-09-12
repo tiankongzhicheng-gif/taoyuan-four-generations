@@ -1,0 +1,11 @@
+﻿id,name,zh,generation,born,born_approx,sex,role,education,occupation,note
+hanqing,Li Hanqing,李翰卿,1,1910,False,M,Great-grandfather,Higher education,Landlord (farmland),Imprisoned as a landlord after 1949; property confiscated. Year not recorded.
+zhiyuan,Li Zhiyuan,李致远,2,1939,False,M,Eldest son (grandfather),"University, Wuhan",Worked in Wuhan,"Left home alone to study in Wuhan; stayed, married, raised children."
+zhiqing,Li Zhiqing,李致清,2,,,F,Eldest daughter,"University, Changsha",Worked in Changsha,"Left home alone to study in Changsha; stayed, married, raised children."
+zhiping,Li Zhiping,李致平,2,,,M,Second son,No schooling after 1949,"Farmer, home village",
+zhilan,Li Zhilan,李致兰,2,,,F,Second daughter,No schooling after 1949,Married far from home,Married young; destination not recorded.
+zhikang,Li Zhikang,李致康,2,,,M,Third son,No schooling after 1949,Worked in the local town,
+zhimei,Li Zhimei,李致梅,2,,,F,Third daughter,No schooling after 1949,Worked in the local town,
+lostson,A son who died young,,2,,,M,Son,,,Birth order not recorded.
+g3,Parents' generation,,3,1973,False,,Children of the eldest son,Primary school through university,"Urban middle class, Wuhan",
+g4,The author,,4,2007,True,,Fourth generation,Secondary school abroad; university in Waterloo,Student,Account says early 2000s.

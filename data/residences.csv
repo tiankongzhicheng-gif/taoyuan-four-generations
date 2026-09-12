@@ -1,0 +1,17 @@
+﻿person,place,from,to,approx,note
+hanqing,village,1910,1951,False,Location after imprisonment not recorded.
+zhiyuan,village,1939,1955,True,
+zhiyuan,wuhan,1955,1995,True,Move year not recorded; later years not recorded.
+zhiqing,village,1941,1956,True,
+zhiqing,changsha,1956,1995,True,Move year not recorded; later years not recorded.
+zhiping,village,1945,1995,True,
+zhilan,village,1948,1966,True,Then married far away; destination not recorded.
+zhikang,village,1952,1982,True,
+zhikang,town,1982,1995,True,
+zhimei,village,1956,1982,True,
+zhimei,town,1982,1995,True,
+g3,wuhan,1973,2026,False,
+g4,wuhan,2007,2021,True,
+g4,montreal,2021,2022,True,
+g4,stanstead,2022,2026,True,
+g4,waterloo,2026,2026,False,

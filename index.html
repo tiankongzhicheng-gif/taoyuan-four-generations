@@ -26,8 +26,10 @@
       <li><a href="#g2" data-stop="g2">1939</a></li>
       <li><a href="#g3" data-stop="g3">1973</a></li>
       <li><a href="#g4" data-stop="g4">2000s</a></li>
-      <li><a href="#routes" data-stop="routes">Routes</a></li>
+      <li><a href="#routes" data-stop="routes">Map</a></li>
       <li><a href="#family" data-stop="family">Family</a></li>
+      <li><a href="#network" data-stop="network">Network</a></li>
+      <li><a href="#analysis" data-stop="analysis">Analysis</a></li>
       <li><a href="#words" data-stop="words">Words</a></li>
       <li><a href="#method" data-stop="method">Method</a></li>
     </ol>
@@ -67,7 +69,7 @@
   <section class="intro" id="story" aria-labelledby="intro-title">
     <h2 id="intro-title" class="visually-hidden">About this history</h2>
     <p class="lede">For more than a hundred years, one family from the countryside of Taoyuan County in Hunan has lived through every turn of modern China: the end of the empire, war, revolution, reform, and the long boom. None of them chose the times. Each generation made its choices inside them.</p>
-    <p>I am the fourth generation. This site records what my family has told me, before it exists only in memory. It does not judge the events it describes. It follows what they did to four lives.</p>
+    <p>I am the fourth generation. This site records what my family has told me, before it exists only in memory, and asks one question: how did land reform, industrialization, and urbanization shape the paths of a single family? It does not judge the events it describes. It follows what they did to four lives.</p>
     <p class="note">Names are pseudonyms. Photographs are period images from public archives, used because family photographs are not available; none of them show the Li family.</p>
   </section>
 
@@ -189,15 +191,23 @@
   </article>
 
   <section class="routes" id="routes" aria-labelledby="routes-title">
-    <h2 id="routes-title">Where the family went</h2>
-    <p class="section-sub">Choose a journey. Village locations are approximate.</p>
-    <div class="routes__layout">
-      <ol class="legs" id="legs"></ol>
-      <div class="map-frame">
-        <div id="map" aria-label="Map of the family’s routes from Taoyuan County"></div>
-        <p class="map-fallback" id="map-fallback" hidden>The map could not load. The journeys are listed beside it.</p>
-      </div>
+    <h2 id="routes-title">Where the family went, year by year</h2>
+    <p class="section-sub">Move the year to see where each person was living and which events were under way. Village and town positions, and years marked approx., are estimates.</p>
+    <div class="timebar">
+      <button class="button button--quiet" type="button" id="play" aria-pressed="false">Play</button>
+      <label class="timebar__label" for="year">Year</label>
+      <input type="range" id="year" min="1910" max="2026" step="1" value="1955">
+      <output class="timebar__out" id="year-out" for="year">1955</output>
     </div>
+    <div class="routes__layout">
+      <div class="map-frame">
+        <div id="map" aria-label="Map of where family members lived in the selected year"></div>
+        <p class="map-fallback" id="map-fallback" hidden>The map could not load. The panel beside it lists where everyone was.</p>
+      </div>
+      <aside class="year-panel" id="year-panel" aria-live="polite"></aside>
+    </div>
+    <h3 class="legs__title">Jump to a move</h3>
+    <ol class="legs" id="legs"></ol>
   </section>
 
   <section class="family" id="family" aria-labelledby="family-title">
@@ -206,10 +216,73 @@
     <div class="tree" id="tree"></div>
   </section>
 
+  <section class="network" id="network" aria-labelledby="network-title">
+    <h2 id="network-title">The family as a network</h2>
+    <p class="section-sub">People, places, communities, and events, connected as the family account describes them. Select any node to see what it links to.</p>
+    <div class="network__layout">
+      <div class="graph" id="graph" role="group" aria-label="Network graph"></div>
+      <aside class="graph-detail" id="graph-detail" aria-live="polite">
+        <p class="graph-detail__name">Select a node</p>
+        <p>Choose a person, place, community, or event to see its connections. Select the empty background to clear.</p>
+      </aside>
+    </div>
+    <ul class="legend" id="graph-legend" aria-label="Legend"></ul>
+    <details class="table-view">
+      <summary>Show all connections as a table</summary>
+      <div class="table-scroll"><table id="graph-table"></table></div>
+    </details>
+  </section>
+
+  <section class="analysis" id="analysis" aria-labelledby="analysis-title">
+    <h2 id="analysis-title">How national change shaped one family</h2>
+    <p class="section-sub">China’s urban share and farm employment, from national statistics, against the share of the six Li siblings living in a town or city.</p>
+    <figure class="macro">
+      <div class="macro__chart" id="macro-chart"></div>
+      <figcaption>National figures: National Bureau of Statistics of China, selected years. Sibling line: computed from the residence records on this site, several of which are approximate; it ends in 1995, where the account stops recording the siblings.</figcaption>
+    </figure>
+    <details class="table-view">
+      <summary>Show the chart data as a table</summary>
+      <div class="table-scroll"><table id="macro-table"></table></div>
+    </details>
+    <div class="forces">
+      <div class="force">
+        <h3>Land reform</h3>
+        <div class="prose">
+          <p>Land reform did not only take the family's land. It gave every member a class label, and that label decided who could go to school. The two children born before 1949 had already been educated; the four born later were not. Birth order became destiny.</p>
+          <p>The same line separated who later left. Every member who reached a city before the 1980s did so through education. The restitution policy of the early 1980s returned part of the property and let the rest of the family move into town, but not back to where it had been.</p>
+        </div>
+      </div>
+      <div class="force">
+        <h3>Industrialization</h3>
+        <div class="prose">
+          <p>In the 1950s the state built Wuhan into an industrial centre. Cities needed educated workers, and a university place was one of the few routes from a village into that workforce. The eldest son took it and built a working life in Wuhan.</p>
+          <p>After 1978, market reform turned that urban foothold into something larger. His children, born in 1973, grew up as the economy took off and became part of the new urban middle class.</p>
+        </div>
+      </div>
+      <div class="force">
+        <h3>Urbanization</h3>
+        <div class="prose">
+          <p>From 1958, household registration fixed people as rural or urban. For a generation the family stayed split along that line: two in cities, four on the land. On the chart, the siblings’ urban share holds at two in six for a quarter of a century, until the reforms of the early 1980s move two more into town.</p>
+          <p>By the time China became a majority-urban country in 2011, the family's eldest line had been urban for two generations. The fourth generation's move is no longer from village to city, but from one country to another.</p>
+        </div>
+      </div>
+    </div>
+    <p class="answer">National change set the options. Inside the family, the timing of a birth and access to education decided who crossed the line from countryside to city.</p>
+  </section>
+
   <section class="words" id="words" aria-labelledby="words-title">
-    <h2 id="words-title">The words each generation lived by</h2>
-    <p class="section-sub">Key terms from the family account, grouped by the generation they belong to. They are my selection, not a count from recorded interviews.</p>
-    <div class="coupons" id="coupons"></div>
+    <h2 id="words-title">The words each generation uses</h2>
+    <div class="simulated" role="note">
+      <p class="simulated__stamp">Simulated data</p>
+      <p>No interviews have been recorded yet. The counts below are invented to show how the analysis will work; they will be replaced with counts from real transcripts.</p>
+    </div>
+    <p class="section-sub">Keyness compares how often each generation uses a word with how often the other two do. Longer bars mean a word is more distinctive of that generation (log-likelihood; anything above 3.84 is significant at p &lt; 0.05).</p>
+    <div class="keyness" id="keyness"></div>
+    <p class="shared" id="shared"></p>
+    <details class="table-view">
+      <summary>Show keyword counts as a table</summary>
+      <div class="table-scroll"><table id="keyness-table"></table></div>
+    </details>
   </section>
 
   <section class="method" id="method" aria-labelledby="method-title">
@@ -220,8 +293,12 @@
         <p>The narrative comes from the family’s own account, written down by me in 2026. Dates given as years (1910, 1939, 1973) come from that account. Where the account gives no date, for example the year my great-grandfather was imprisoned, the site does not supply one.</p>
         <h3>What is substituted</h3>
         <p>There are no family photographs, household registers, or letters in this version. Each photograph is a public-domain or openly licensed image from the same region or era, captioned with its real place and date. Family names are pseudonyms.</p>
+        <h3>Data</h3>
+        <p>Everything on the map, the network, and the charts comes from one structured file of people, places, residences, moves, events, and relationships. Years marked approx. are estimates placed for mapping. Download: <a href="data/persons.csv">people</a>, <a href="data/places.geojson">places (GeoJSON)</a>, <a href="data/moves.geojson">moves (GeoJSON)</a>, <a href="data/residences.csv">residences</a>, <a href="data/events.csv">events</a>, <a href="data/relations.csv">relationships</a>, or <a href="data/family.json">everything (JSON)</a>.</p>
+        <h3>Keyword analysis</h3>
+        <p>The keyword section uses log-likelihood keyness: each generation’s word counts are compared with the other two generations combined, and only words above the 3.84 significance threshold are shown. The method is real; the counts are simulated, because no interviews have been recorded yet. The analysis script is <a href="analysis/build.py">analysis/build.py</a>.</p>
         <h3>What comes next</h3>
-        <p>The next step is recorded interviews with each living generation, asking everyone the same questions: why they moved, what they feared, what they valued. Transcripts would let the word section count what people actually say, instead of relying on my selection.</p>
+        <p>Recorded interviews with each living generation, asking everyone the same questions: why they moved, what they feared, what they valued. Transcripts will replace the simulated counts and fill in the approximate years.</p>
         <h3>A note on perspective</h3>
         <p>This history is told by the youngest generation. It is shaped by what I was told and by what the older generations chose to pass on. That filtering is part of the subject, not a flaw to hide.</p>
       </div>
@@ -240,6 +317,9 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" defer></script>
+<script src="data/family.js" defer></script>
 <script src="main.js" defer></script>
+<script src="viz.js" defer></script>
 </body>
 </html>

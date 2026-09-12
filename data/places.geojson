@@ -1,0 +1,124 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     111.33,
+     28.79
+    ]
+   },
+   "properties": {
+    "id": "village",
+    "name": "Home village",
+    "zh": "桃源县乡村",
+    "type": "village",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     111.49,
+     28.905
+    ]
+   },
+   "properties": {
+    "id": "town",
+    "name": "Local town",
+    "zh": "桃源县城镇",
+    "type": "town",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     112.939,
+     28.228
+    ]
+   },
+   "properties": {
+    "id": "changsha",
+    "name": "Changsha",
+    "zh": "长沙",
+    "type": "city",
+    "approx": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     114.305,
+     30.593
+    ]
+   },
+   "properties": {
+    "id": "wuhan",
+    "name": "Wuhan",
+    "zh": "武汉",
+    "type": "city",
+    "approx": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -73.567,
+     45.502
+    ]
+   },
+   "properties": {
+    "id": "montreal",
+    "name": "Montreal",
+    "zh": "蒙特利尔",
+    "type": "abroad",
+    "approx": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.099,
+     45.02
+    ]
+   },
+   "properties": {
+    "id": "stanstead",
+    "name": "Stanstead",
+    "zh": "斯坦斯特德",
+    "type": "abroad",
+    "approx": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.52,
+     43.464
+    ]
+   },
+   "properties": {
+    "id": "waterloo",
+    "name": "Waterloo",
+    "zh": "滑铁卢",
+    "type": "abroad",
+    "approx": false
+   }
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+﻿id,from,to,scope,lens,label,text,persons,approx
+e1911,1911,1912,national,politics,End of the empire,The Xinhai Revolution ends the Qing dynasty; the Republic of China is founded in 1912.,,
+e1937,1937,1945,national,war,War against Japan,"Changde, the prefecture that includes Taoyuan, is a battlefield in 1943.",,
+e1949,1949,1949,national,politics,People's Republic founded,The civil war ends and the People's Republic of China is founded.,,
+e1950,1950,1953,national,land reform,Land reform,The Land Reform Law of 1950 redistributes land and gives every rural household a class label.,,
+e1953,1953,1957,national,industrialization,First Five-Year Plan,State-led heavy industry. Wuhan becomes a major industrial base; the Wuhan Yangtze River Bridge opens in 1957.,,
+e1958,1958,1958,national,urbanization,Household registration rules,The 1958 hukou regulations fix each person as rural or urban and sharply limit moves from countryside to city.,,
+e1958b,1958,1983,national,land reform,People's communes,Rural land and labour are organized into collectives until the early 1980s.,,
+e1966,1966,1976,national,politics,Cultural Revolution,Families with a landlord label remain under political pressure.,,
+e1977,1977,1977,national,education,University entrance exam returns,The national gaokao is restored after eleven years.,,
+e1978,1978,1978,national,industrialization,Reform and opening,Market reforms begin; the economy starts decades of fast growth.,,
+e1982,1981,1984,national,land reform,Rural reform and restitution,"Collectives give way to household farming, and restitution policies return some confiscated property.",,
+e1998,1998,1998,national,urbanization,Housing reform,"Work-unit housing ends; city homes become purchases, usually with a mortgage.",,
+e1999,1999,1999,national,education,University expansion,University enrolment expands rapidly.,,
+e2001,2001,2001,national,industrialization,WTO accession,China joins the World Trade Organization.,,
+e2011,2011,2011,national,urbanization,Urban majority,"For the first time, more than half of China's population lives in cities.",,
+f1910,1910,1910,family,family,Li Hanqing born,Born in the countryside of Taoyuan County.,hanqing,
+f1930,1928,1948,family,family,Estate grows,"With higher education and his parents' savings, he expands the family farmland; the household becomes a known landlord family.",hanqing,True
+f1939,1939,1939,family,family,Li Zhiyuan born,The eldest son is born at the family's most prosperous time.,zhiyuan,
+f1951,1950,1952,family,land reform,Imprisonment and confiscation,Li Hanqing is imprisoned as a landlord; the house and land are confiscated. Year not recorded.,hanqing;zhiyuan;zhiqing;zhiping;zhilan;zhikang;zhimei,True
+f1955,1955,1956,family,education,The two eldest leave to study,Only the two eldest had been educated. They leave home for Wuhan and Changsha; the four younger siblings stay and farm.,zhiyuan;zhiqing;zhiping;zhilan;zhikang;zhimei,True
+f1973,1973,1973,family,family,Third generation born,The eldest son's children are born in Wuhan.,g3;zhiyuan,
+f1982,1982,1982,family,land reform,Property partly returned,Part of the property is returned and the family moves into the local town.,zhikang;zhimei;zhiping,True
+f2000,1998,2026,family,urbanization,Urban middle class,The third generation's careers grow with the economy.,g3,
+f2021,2021,2026,family,education,Study abroad,"With family support, the fourth generation studies in Canada.",g4;g3,True
