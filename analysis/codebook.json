@@ -24,7 +24,7 @@
     "g3": [["武汉", "Wuhan"], ["城市", "the city"], ["城镇", "towns"], ["农村", "the countryside"], ["搬家", "moving house"], ["工作", "work"], ["单位", "work unit"], ["买房", "buying a home"], ["老家", "home village"], ["家乡", "hometown"]],
     "g4": [["留学", "studying abroad"], ["出国", "going abroad"], ["海外", "overseas"], ["加拿大", "Canada"], ["美国", "the United States"], ["大学", "university"], ["申请", "applications"], ["工作", "work"], ["就业", "employment"], ["身份", "identity, status"], ["移民", "emigration"], ["回国", "returning to China"]]
    }},
-  {"id": "history", "label": "Historical and social change", "zh": "历史 / 社会变化", "question": "Which words tie the story to its times?",
+  {"id": "history", "label": "Historical change", "zh": "历史 / 社会变化", "question": "Which words tie the story to its times?",
    "codes": {
     "g2": [["抗日战争", "war against Japan"], ["解放", "liberation"], ["土地改革", "land reform"], ["减租减息", "rent and interest reduction"], ["阶级斗争", "class struggle"], ["政治运动", "political campaigns"], ["落实政策", "restitution policy"]],
     "g3": [["改革开放", "reform and opening"], ["高考恢复", "exam restored"], ["城市化", "urbanization"], ["市场经济", "market economy"], ["经济发展", "economic growth"], ["住房改革", "housing reform"]],

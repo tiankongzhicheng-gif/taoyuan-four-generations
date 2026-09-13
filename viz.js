@@ -446,21 +446,22 @@
     const gens = Object.keys(M.generations);
     const tabs = document.getElementById("mined-tabs");
     const meta = document.getElementById("mined-meta");
+    const zhGen = { g2: "第二代", g3: "第三代", g4: "第四代" };
 
     meta.textContent = `Corpus: ${M.corpus_label}. ` + gens.map((g) => `${M.generations[g].label} ${M.generations[g].characters.toLocaleString("en")} characters`).join(", ") + `. Method: ${M.method}.`;
 
-    function render(dimId) {
-      const dim = M.dimensions.find((d) => d.id === dimId);
-      [...tabs.querySelectorAll("button")].forEach((b) => b.setAttribute("aria-selected", String(b.dataset.dim === dimId)));
-      const max = Math.max(1, ...gens.flatMap((g) => dim.codes[g].map((r) => r.count)));
+    function render(gid) {
+      const info = M.generations[gid];
+      [...tabs.querySelectorAll("button")].forEach((b) => b.setAttribute("aria-selected", String(b.dataset.gen === gid)));
+      const max = Math.max(1, ...M.dimensions.flatMap((d) => d.codes[gid].map((r) => r.count)));
       host.innerHTML = "";
-      host.setAttribute("aria-label", `${dim.label}: keyword counts by generation`);
-      gens.forEach((g) => {
-        const info = M.generations[g];
+      host.setAttribute("aria-label", `${info.label}: keyword counts by dimension`);
+      M.dimensions.forEach((d) => {
         const col = el("div", "key-col");
-        col.appendChild(el("h3", "", `${esc(info.label)}<small>${esc(info.who)}, ${esc(info.years)}</small>`));
+        const total = d.codes[gid].reduce((sum, r) => sum + r.count, 0);
+        col.appendChild(el("h3", "", `${esc(d.label)} <span class="zh" lang="zh-Hans">${esc(d.zh)}</span><small>${esc(d.question)} ${total} matches.</small>`));
         const ol = el("ol", "key-list");
-        [...dim.codes[g]].sort((x, y) => y.count - x.count).forEach((r) => {
+        [...d.codes[gid]].sort((x, y) => y.count - x.count).forEach((r) => {
           const li = el("li", "key-row" + (r.count ? "" : " key-row--zero"));
           li.tabIndex = 0;
           li.title = `${r.count} occurrences, ${r.per10k} per 10,000 tokens`;
@@ -475,22 +476,23 @@
       });
     }
 
-    M.dimensions.forEach((d, i) => {
-      const b = el("button", "tab", `${esc(d.label)} <span lang="zh-Hans">${esc(d.zh)}</span>`);
+    gens.forEach((g) => {
+      const info = M.generations[g];
+      const b = el("button", "tab", `${esc(info.label)} <span lang="zh-Hans">${zhGen[g] || ""}</span>`);
       b.type = "button";
       b.setAttribute("role", "tab");
-      b.dataset.dim = d.id;
-      b.addEventListener("click", () => render(d.id));
+      b.dataset.gen = g;
+      b.addEventListener("click", () => render(g));
       b.addEventListener("keydown", (e) => {
         if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
         const list = [...tabs.querySelectorAll("button")];
         const next = list[(list.indexOf(b) + (e.key === "ArrowRight" ? 1 : list.length - 1)) % list.length];
         next.focus();
-        render(next.dataset.dim);
+        render(next.dataset.gen);
       });
       tabs.appendChild(b);
     });
-    render(M.dimensions[0].id);
+    render(gens[0]);
 
     const top = document.getElementById("mined-top");
     top.innerHTML = gens.map((g) => {
@@ -500,9 +502,9 @@
     }).join("");
 
     const table = document.getElementById("mined-table");
-    table.innerHTML = `<thead><tr><th scope="col">Generation</th><th scope="col">Dimension</th><th scope="col">Keyword</th><th scope="col">Meaning</th><th scope="col">Count</th><th scope="col">Per 10,000 tokens</th></tr></thead><tbody>` +
-      gens.flatMap((g) => M.dimensions.flatMap((d) => d.codes[g].map((r) =>
-        `<tr><td>${esc(M.generations[g].label)}</td><td>${esc(d.label)}</td><td lang="zh-Hans">${esc(r.term)}</td><td>${esc(r.en)}</td><td>${r.count}</td><td>${r.per10k}</td></tr>`))).join("") + "</tbody>";
+    table.innerHTML = `<thead><tr><th scope="col">Generation 代际</th><th scope="col">Dimension 分析维度</th><th scope="col">Keyword 关键词</th><th scope="col">Meaning</th><th scope="col">Count 挖掘次数</th></tr></thead><tbody>` +
+      gens.flatMap((g) => M.dimensions.flatMap((d) => d.codes[g].map((r, i) =>
+        `<tr${i === 0 ? ' class="group-start"' : ""}><td>${i === 0 ? esc(M.generations[g].label) + " " + (zhGen[g] || "") : ""}</td><td>${i === 0 ? esc(d.label) + " " + esc(d.zh) : ""}</td><td lang="zh-Hans">${esc(r.term)}</td><td>${esc(r.en)}</td><td>${r.count}</td></tr>`))).join("") + "</tbody>";
   }
 
   const start = () => {
