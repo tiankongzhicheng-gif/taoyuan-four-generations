@@ -40,6 +40,40 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     111.13,
+     29.42
+    ]
+   },
+   "properties": {
+    "id": "cili",
+    "name": "Cili County",
+    "zh": "慈利县",
+    "type": "county",
+    "approx": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     111.7,
+     29.03
+    ]
+   },
+   "properties": {
+    "id": "changde",
+    "name": "Changde",
+    "zh": "常德",
+    "type": "city",
+    "approx": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      112.939,
      28.228
     ]
@@ -65,6 +99,23 @@
     "id": "wuhan",
     "name": "Wuhan",
     "zh": "武汉",
+    "type": "city",
+    "approx": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     114.89,
+     30.39
+    ]
+   },
+   "properties": {
+    "id": "ezhou",
+    "name": "Ezhou",
+    "zh": "鄂州",
     "type": "city",
     "approx": false
    }

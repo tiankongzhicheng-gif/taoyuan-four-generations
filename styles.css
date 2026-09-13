@@ -350,6 +350,8 @@ section, article { padding-inline: var(--gutter); }
   margin: var(--space-4) 0; max-width: 24ch; color: var(--violet); text-wrap: balance;
 }
 
+.pull--second { font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--ink); margin-top: var(--space-5); }
+.footnote { font-size: 0.85rem; color: var(--ink-2); margin-top: var(--space-2); }
 .plate { margin: 0; }
 .plate img {
   width: 100%; border-radius: var(--radius);
@@ -532,6 +534,7 @@ input[type="range"] { width: 100%; accent-color: var(--violet); height: 2.75rem;
 .g-link { stroke: var(--rule); stroke-width: 1.5; transition: opacity 160ms ease; }
 .g-link--parent { stroke: var(--ink); stroke-width: 2; }
 .g-link--experienced, .g-link--part-of { stroke-dasharray: 3 4; }
+.g-link--cut-off-contact { stroke: var(--violet); stroke-width: 2.5; stroke-dasharray: 8 5; }
 .g-node { cursor: pointer; outline: none; transition: opacity 160ms ease; }
 .g-hit { fill: transparent; }
 .g-node path { stroke-width: 2; }
@@ -546,7 +549,7 @@ input[type="range"] { width: 100%; accent-color: var(--violet); height: 2.75rem;
 .g-node.is-dim, .g-link.is-dim { opacity: 0.18; }
 .g-node.is-on path { stroke: var(--violet); stroke-width: 3.5; }
 .g-node:focus-visible .g-hit { stroke: var(--violet); stroke-width: 3; }
-.graph-detail { background: var(--face); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.25rem; font-size: 0.92rem; line-height: 1.45; max-height: 37.5rem; overflow: auto; }
+.graph-detail { background: var(--face); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.25rem; font-size: 0.92rem; line-height: 1.45; max-height: 47.5rem; overflow: auto; }
 .graph-detail__name { font-family: var(--display); font-weight: 800; font-size: 1.8rem; line-height: 1.05; margin-bottom: 0.4rem; }
 .graph-detail ul { list-style: none; padding: 0; margin: 0.75rem 0 0; display: grid; gap: 0.35rem; }
 .graph-detail li { border-top: 1.5px dashed var(--rule); padding-top: 0.35rem; }
@@ -559,6 +562,8 @@ input[type="range"] { width: 100%; accent-color: var(--violet); height: 2.75rem;
 .legend__item--group path { fill: var(--violet); }
 .legend__item--event path { fill: var(--face); stroke: var(--violet); }
 .legend__item--national path { fill: var(--ink-2); }
+.legend__edge i { display: inline-block; width: 1.6rem; border-top: 2px solid var(--ink); }
+.legend__edge--cut i { border-top: 2.5px dashed var(--violet); }
 @media (max-width: 860px) { .network__layout { grid-template-columns: 1fr; } .graph-detail { max-height: none; } }
 
 .table-view { margin-top: var(--space-2); font-size: 0.9rem; }

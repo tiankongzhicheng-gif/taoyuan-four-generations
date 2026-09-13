@@ -1,7 +1,12 @@
 ﻿id,person,with,from,to,year,approx,trigger,label,text
-m1,zhiyuan,,village,wuhan,1955,True,education,Taoyuan to Wuhan,"The eldest son leaves home alone to study in Wuhan, and stays to work and raise a family. Year not recorded."
+m0,zhiyuan,hanqing,village,cili,1943,True,war,Fleeing to Cili,"During the war against Japan the family flees west to Cili County, leaving its property behind. Year not recorded."
+m0b,zhiyuan,hanqing,cili,village,1945,False,war,Back to Taoyuan,The war ends and the family returns home to run its property again.
+m1,zhiyuan,,village,changde,1951,False,education,Taoyuan to Changde,"The year the family's property is confiscated, the eldest son finishes primary school and goes to middle school in Changde."
+m1b,zhiyuan,,changde,wuhan,1955,False,education,Changde to Wuhan,At sixteen he is admitted to an engineering college in Wuhan to study construction engineering.
 m2,zhiqing,,village,changsha,1956,True,education,Taoyuan to Changsha,The eldest daughter leaves home alone to study in Changsha and settles there. Year not recorded.
+m2b,zhiyuan,,wuhan,ezhou,1959,False,industry,Wuhan to Ezhou,"After graduating he joins a steel plant in Ezhou as a technician, and stays for forty-one years."
 m3,zhikang,zhimei,village,town,1982,True,restitution,Village to town,Early 1980s. Part of the property is returned and the family moves from the village into the local town.
+m3b,g3,,ezhou,wuhan,1991,False,city,Ezhou to Wuhan,The third generation moves to Wuhan and settles there.
 m4,g4,,wuhan,montreal,2021,True,study abroad,Wuhan to Montreal,The fourth generation goes abroad to study.
 m5,g4,,montreal,stanstead,2022,True,study abroad,Montreal to Stanstead,"Secondary school in Stanstead, Quebec."
 m6,g4,,stanstead,waterloo,2026,False,study abroad,Stanstead to Waterloo,"University in Waterloo, Ontario."

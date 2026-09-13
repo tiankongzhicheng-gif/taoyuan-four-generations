@@ -1,7 +1,14 @@
 ﻿person,place,from,to,approx,note
-hanqing,village,1910,1951,False,Location after imprisonment not recorded.
-zhiyuan,village,1939,1955,True,
-zhiyuan,wuhan,1955,1995,True,Move year not recorded; later years not recorded.
+hanqing,village,1910,1943,True,
+hanqing,cili,1943,1945,True,Fled the war with his family; year of flight not recorded.
+hanqing,village,1945,1951,True,
+hanqing,village,1955,1981,True,Released from prison in 1955; three years of labour reform in Taoyuan.
+zhiyuan,village,1939,1943,True,
+zhiyuan,cili,1943,1945,True,
+zhiyuan,village,1945,1951,False,
+zhiyuan,changde,1951,1955,False,
+zhiyuan,wuhan,1955,1959,False,
+zhiyuan,ezhou,1959,2000,False,Later years not recorded.
 zhiqing,village,1941,1956,True,
 zhiqing,changsha,1956,1995,True,Move year not recorded; later years not recorded.
 zhiping,village,1945,1995,True,
@@ -10,7 +17,8 @@ zhikang,village,1952,1982,True,
 zhikang,town,1982,1995,True,
 zhimei,village,1956,1982,True,
 zhimei,town,1982,1995,True,
-g3,wuhan,1973,2026,False,
+g3,ezhou,1973,1991,False,
+g3,wuhan,1991,2026,False,
 g4,wuhan,2007,2021,True,
 g4,montreal,2021,2022,True,
 g4,stanstead,2022,2026,True,

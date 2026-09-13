@@ -28,29 +28,35 @@
   const rows = [
     {
       name: "Li Hanqing", sub: "Generation 1, b. 1910",
-      life: [[1910, 1969, "known"], [1969, 1992, "unknown"]],
+      life: [[1910, 1981, "known"], [1981, 1995, "unknown"]],
       marks: [
         { year: 1910, label: "1910", text: "Born in the countryside of Taoyuan County, the year before the empire falls." },
-        { from: 1928, to: 1948, label: "1930s-1940s", text: "With higher education and his parents’ savings behind him, he grows the family’s farmland. The Li household becomes one of the known landlord families of the area." },
-        { from: 1937, to: 1969, label: "Late 1930s to late 1960s", text: "Seven children are born. One son dies young." },
-        { year: 1951, label: "After 1949", text: "Classified as a landlord, he is sent to prison. The house and land are confiscated. The family account does not record the year." }
+        { from: 1928, to: 1942, label: "1930s", text: "With higher education and his parents’ savings behind him, he grows the family’s farmland. The Li household becomes one of the known landlord families of the area." },
+        { from: 1943, to: 1945, label: "During the war", text: "The family flees to Cili County, leaving its property behind, and returns in 1945. Year of flight not recorded." },
+        { year: 1951, label: "1951", text: "Land reform: the family is classified as landlords, the property is confiscated, and he is imprisoned." },
+        { from: 1955, to: 1958, label: "1955-1958", text: "Released from prison and returned to Taoyuan for three years of labour reform." },
+        { year: 1981, label: "1981", text: "His status is restored and he retires. His eldest son reconnects with him after eighteen years." }
       ]
     },
     {
       name: "Li Zhiyuan", sub: "Generation 2, b. 1939",
-      life: [[1939, 1986, "known"], [1986, 2012, "unknown"]],
+      life: [[1939, 2000, "known"], [2000, 2015, "unknown"]],
       marks: [
-        { year: 1939, label: "1939", text: "Born the eldest son, when the family is at its most prosperous." },
-        { from: 1952, to: 1966, label: "Year not recorded", text: "Leaves home on his own to study in Wuhan. He and his elder sister are the only two of the children who received an education." },
-        { year: 1982, label: "Early 1980s", text: "The restitution policy returns part of the family’s property and the household moves into town. He has settled in Wuhan with a job and a family of his own." }
+        { year: 1939, label: "1939", text: "Born the eldest son in a village in Taoyuan, in the middle of the war." },
+        { year: 1944, label: "1944", text: "Starts at a private school in Cili County, where the family has fled." },
+        { from: 1951, to: 1955, label: "1951-1955", text: "The year the family loses everything, he finishes primary school and goes to middle school in Changde." },
+        { from: 1955, to: 1959, label: "1955-1959", text: "Admitted at sixteen to an engineering college in Wuhan; studies construction engineering." },
+        { from: 1963, to: 1981, label: "1963-1981", text: "Because of his father’s history, he cuts off contact with his family in Taoyuan for eighteen years." },
+        { year: 2000, label: "2000", text: "Retires as a senior engineer after forty-one years at a steel plant in Ezhou." }
       ]
     },
     {
       name: "Parents’ generation", sub: "Generation 3, b. 1973",
       life: [[1973, 2026, "known"]],
       marks: [
-        { year: 1973, label: "1973", text: "Born just before the country reopens its universities." },
-        { from: 1979, to: 1996, label: "1980s-1990s", text: "A complete education, from primary school through university." },
+        { year: 1973, label: "1973", text: "Born in Ezhou, just before the country reopens its universities." },
+        { from: 1979, to: 1990, label: "1980s", text: "A complete education, from primary school onward." },
+        { year: 1991, label: "1991", text: "Moves to Wuhan and settles there." },
         { from: 1998, to: 2026, label: "Late 1990s to today", text: "Careers that grow with the economy. They become the experienced core of their workplaces and part of the urban middle class." }
       ]
     },
@@ -122,11 +128,10 @@
         buttons.push(btn);
         track.appendChild(btn);
       });
-      // overlapping spans on the first row sit on two levels
-      if (row.name === "Li Hanqing") {
+      // overlapping spans sit on two levels
+      if (row.name === "Li Zhiyuan") {
         const spans = track.querySelectorAll(".span");
-        if (spans[1]) spans[1].style.marginTop = "10px";
-        if (spans[0]) spans[0].style.marginTop = "-22px";
+        if (spans[2]) spans[2].style.marginTop = "10px";
       }
       r.appendChild(track);
       rowLayer.appendChild(r);
@@ -138,7 +143,7 @@
   /* ---------------- Family tree ---------------- */
 
   const children = [
-    { order: "Eldest son", name: "Li Zhiyuan", zh: "李致远", tag: "School", fate: "Studied in Wuhan. Stayed, worked, and raised a family there.", school: true, line: true },
+    { order: "Eldest son", name: "Li Zhiyuan", zh: "李致远", tag: "School", fate: "College in Wuhan, then 41 years as an engineer at a steel plant in Ezhou.", school: true, line: true },
     { order: "Eldest daughter", name: "Li Zhiqing", zh: "李致清", tag: "School", fate: "Studied in Changsha. Stayed, worked, and raised a family there.", school: true },
     { order: "Second son", name: "Li Zhiping", zh: "李致平", tag: "Farming", fate: "Farmed in the home village." },
     { order: "Second daughter", name: "Li Zhilan", zh: "李致兰", tag: "Married away", fate: "Married young and moved far from home." },
@@ -165,7 +170,7 @@
     tree.appendChild(ul);
     const line = el("ol", "tree__line");
     line.setAttribute("aria-label", "The line this site follows");
-    line.innerHTML = "<li><b>Li Zhiyuan</b>&nbsp;in Wuhan</li><li>His children, b. 1973</li><li><b>The author</b>&nbsp;in Waterloo</li>";
+    line.innerHTML = "<li><b>Li Zhiyuan</b>&nbsp;in Ezhou</li><li>His children, b. 1973, Ezhou then Wuhan</li><li><b>The author</b>&nbsp;in Waterloo</li>";
     tree.appendChild(line);
     tree.appendChild(el("p", "tree__legend", "Only the eldest son and eldest daughter were old enough to be educated before 1949. The outlined card marks the line this site follows."));
   }

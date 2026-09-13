@@ -1,9 +1,10 @@
 ﻿id,from,to,scope,lens,label,text,persons,approx
 e1911,1911,1912,national,politics,End of the empire,The Xinhai Revolution ends the Qing dynasty; the Republic of China is founded in 1912.,,
-e1937,1937,1945,national,war,War against Japan,"Changde, the prefecture that includes Taoyuan, is a battlefield in 1943.",,
-e1949,1949,1949,national,politics,People's Republic founded,The civil war ends and the People's Republic of China is founded.,,
-e1950,1950,1953,national,land reform,Land reform,The Land Reform Law of 1950 redistributes land and gives every rural household a class label.,,
-e1953,1953,1957,national,industrialization,First Five-Year Plan,State-led heavy industry. Wuhan becomes a major industrial base; the Wuhan Yangtze River Bridge opens in 1957.,,
+e1937,1937,1945,national,war,War against Japan,"Fighting reaches Changde, the prefecture that includes Taoyuan, in 1943. Many families flee west into the mountains.",,
+e1949,1949,1949,national,politics,Liberation of Changde and Taoyuan,"The People's Republic is founded in October 1949. The counties around Changde, Taoyuan among them, come under the new government between mid-July and early August 1949.",,
+e1950b,1950,1950,national,land reform,Rent and interest reduction,"Before land redistribution, rents and loan interest owed to landlords are cut.",,
+e1950,1950,1952,national,land reform,Land reform,Hunan's land reform runs from the winter of 1950 to the spring of 1952. Land is redistributed and every rural household receives a class label.,,
+e1953,1953,1957,national,industrialization,First Five-Year Plan,State-led heavy industry. Wuhan becomes a major base for steel and construction; the Wuhan Yangtze River Bridge opens in 1957.,,
 e1958,1958,1958,national,urbanization,Household registration rules,The 1958 hukou regulations fix each person as rural or urban and sharply limit moves from countryside to city.,,
 e1958b,1958,1983,national,land reform,People's communes,Rural land and labour are organized into collectives until the early 1980s.,,
 e1966,1966,1976,national,politics,Cultural Revolution,Families with a landlord label remain under political pressure.,,
@@ -15,11 +16,18 @@ e1999,1999,1999,national,education,University expansion,University enrolment exp
 e2001,2001,2001,national,industrialization,WTO accession,China joins the World Trade Organization.,,
 e2011,2011,2011,national,urbanization,Urban majority,"For the first time, more than half of China's population lives in cities.",,
 f1910,1910,1910,family,family,Li Hanqing born,Born in the countryside of Taoyuan County.,hanqing,
-f1930,1928,1948,family,family,Estate grows,"With higher education and his parents' savings, he expands the family farmland; the household becomes a known landlord family.",hanqing,True
-f1939,1939,1939,family,family,Li Zhiyuan born,The eldest son is born at the family's most prosperous time.,zhiyuan,
-f1951,1950,1952,family,land reform,Imprisonment and confiscation,Li Hanqing is imprisoned as a landlord; the house and land are confiscated. Year not recorded.,hanqing;zhiyuan;zhiqing;zhiping;zhilan;zhikang;zhimei,True
-f1955,1955,1956,family,education,The two eldest leave to study,Only the two eldest had been educated. They leave home for Wuhan and Changsha; the four younger siblings stay and farm.,zhiyuan;zhiqing;zhiping;zhilan;zhikang;zhimei,True
-f1973,1973,1973,family,family,Third generation born,The eldest son's children are born in Wuhan.,g3;zhiyuan,
+f1930,1928,1942,family,family,Estate grows,"With higher education and his parents' savings, he expands the family farmland; the household becomes a known landlord family.",hanqing,True
+f1939,1939,1939,family,family,Li Zhiyuan born,"The eldest son is born in the home village, in the middle of the war.",zhiyuan,
+f1943,1943,1945,family,war,Refugees in Cili,"The family flees to Cili County, leaving its property behind. At five, the eldest son starts at a private school there.",hanqing;zhiyuan,True
+f1945,1945,1949,family,family,Home again,"Back in Taoyuan, the family runs its property again and the eldest son continues school.",hanqing;zhiyuan,
+f1951,1951,1951,family,land reform,Confiscation and imprisonment,"Land reform reaches the family. The property is confiscated, the household is left bankrupt, and Li Hanqing is imprisoned. His son finishes primary school and leaves for middle school in Changde.",hanqing;zhiyuan;zhiqing;zhiping;zhilan;zhikang;zhimei,
+f1955,1955,1955,family,education,"College, and release","The eldest son, sixteen, enters an engineering college in Wuhan. The same year his father is released from prison and returned to Taoyuan for three years of labour reform.",zhiyuan;hanqing,
+f1956,1956,1956,family,education,Eldest daughter to Changsha,The eldest daughter leaves to study in Changsha. The four younger siblings stay and farm.,zhiqing;zhiping;zhilan;zhikang;zhimei,True
+f1959,1959,2000,family,industrialization,Forty-one years in steel,"Li Zhiyuan joins a steel plant in Ezhou as a technician and rises to senior engineer in building design, construction, and management, retiring in 2000.",zhiyuan,
+f1963,1963,1981,family,land reform,Eighteen years of silence,"Because of his father's history, Li Zhiyuan cuts off contact with his family in Taoyuan. They do not speak again until 1981.",zhiyuan;hanqing,
+f1973,1973,1973,family,family,Third generation born,The eldest son's children are born in Ezhou.,g3;zhiyuan,
+f1981,1981,1981,family,land reform,"Status restored, contact resumed",Li Hanqing's status is restored and he retires. His son reconnects with the family after eighteen years.,hanqing;zhiyuan,
 f1982,1982,1982,family,land reform,Property partly returned,Part of the property is returned and the family moves into the local town.,zhikang;zhimei;zhiping,True
-f2000,1998,2026,family,urbanization,Urban middle class,The third generation's careers grow with the economy.,g3,
+f1991,1991,1991,family,urbanization,Ezhou to Wuhan,The third generation moves to the provincial capital and settles there.,g3,
+f2000,1998,2026,family,urbanization,Urban middle class,The third generation's careers grow with the economy in Wuhan.,g3,
 f2021,2021,2026,family,education,Study abroad,"With family support, the fourth generation studies in Canada.",g4;g3,True

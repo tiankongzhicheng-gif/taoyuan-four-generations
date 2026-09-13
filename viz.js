@@ -119,7 +119,8 @@
         html += "</ul>";
       }
       const offMap = [];
-      if (year > 1951 && year <= 1995) offMap.push("Li Hanqing: location after imprisonment not recorded");
+      if (year >= 1951 && year < 1955) offMap.push("Li Hanqing: in prison, location not recorded");
+      if (year > 1981 && year <= 1995) offMap.push("Li Hanqing: later years not recorded");
       if (year > 1966 && year <= 1995) offMap.push("Li Zhilan: married far away, place not recorded");
       if (offMap.length) html += `<p class="where__off">${offMap.map(esc).join("<br>")}</p>`;
       const active = F.events.filter((e) => year >= e.from && year <= e.to);
@@ -205,7 +206,7 @@
   /* ================= Network ================= */
 
   const contextLinks = [
-    ["f1951", "e1950"], ["f1955", "e1953"], ["f1982", "e1982"], ["f2000", "e1978"], ["f2000", "e1998"], ["e1958", "villagecom"]
+    ["f1951", "e1950"], ["f1951", "e1950b"], ["f1943", "e1937"], ["f1959", "e1953"], ["f1963", "e1966"], ["f1981", "e1982"], ["f1982", "e1982"], ["f2000", "e1978"], ["f2000", "e1998"], ["e1958", "villagecom"]
   ];
 
   function buildNetwork() {
@@ -237,10 +238,10 @@
     contextLinks.forEach(([a, b]) => link(a, b, "part of"));
 
     const width = Math.max(host.clientWidth || 800, 720);
-    const height = 600;
+    const height = 760;
     const sim = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id((d) => d.id).distance((l) => (l.type === "parent" ? 80 : 120)).strength(0.4))
-      .force("charge", d3.forceManyBody().strength(width < 600 ? -260 : -620))
+      .force("charge", d3.forceManyBody().strength(-480))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("collide", d3.forceCollide(width < 600 ? 24 : 40))
       .force("x", d3.forceX(width / 2).strength(width < 600 ? 0.06 : 0.02))
@@ -287,7 +288,7 @@
       const rows = links.filter((l) => l.source.id === d.id || l.target.id === d.id)
         .map((l) => {
           const other = l.source.id === d.id ? l.target : l.source;
-          const verb = l.source.id === d.id ? l.type : ({ parent: "child of", member: "includes", studied: "attended by", worked: "workplace of", "lived in": "home of", experienced: "involved", "part of": "context for" }[l.type] || l.type);
+          const verb = l.source.id === d.id ? l.type : ({ "cut off contact": "contact cut off by", parent: "child of", member: "includes", studied: "attended by", worked: "workplace of", "lived in": "home of", experienced: "involved", "part of": "context for" }[l.type] || l.type);
           return `<li><span>${esc(verb)}</span> ${esc(other.label)}</li>`;
         }).join("");
       detail.innerHTML = `<p class="graph-detail__name">${esc(d.label)}</p><p>${esc(d.info || "")}</p><ul>${rows}</ul>`;
@@ -307,6 +308,9 @@
       const li = el("li", "legend__item legend__item--" + k);
       li.innerHTML = `<svg width="18" height="18" viewBox="-9 -9 18 18" aria-hidden="true"><path d="${d3.symbol(symbol[k], size[k] * 0.55)()}"/></svg>${label}`;
       legend.appendChild(li);
+    });
+    [["parent", "Parent and child"], ["cut", "Contact cut off, 1963 to 1981"]].forEach(([k, label]) => {
+      legend.appendChild(el("li", "legend__item legend__edge legend__edge--" + k, `<i aria-hidden="true"></i>${label}`));
     });
 
     const table = document.getElementById("graph-table");

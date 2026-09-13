@@ -11,18 +11,90 @@
       28.79
      ],
      [
-      114.305,
-      30.593
+      111.13,
+      29.42
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m0",
+    "person": "zhiyuan",
+    "year": 1943,
+    "approx": true,
+    "trigger": "war",
+    "label": "Fleeing to Cili"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      111.13,
+      29.42
+     ],
+     [
+      111.33,
+      28.79
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m0b",
+    "person": "zhiyuan",
+    "year": 1945,
+    "approx": false,
+    "trigger": "war",
+    "label": "Back to Taoyuan"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      111.33,
+      28.79
+     ],
+     [
+      111.7,
+      29.03
      ]
     ]
    },
    "properties": {
     "id": "m1",
     "person": "zhiyuan",
-    "year": 1955,
-    "approx": true,
+    "year": 1951,
+    "approx": false,
     "trigger": "education",
-    "label": "Taoyuan to Wuhan"
+    "label": "Taoyuan to Changde"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      111.7,
+      29.03
+     ],
+     [
+      114.305,
+      30.593
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m1b",
+    "person": "zhiyuan",
+    "year": 1955,
+    "approx": false,
+    "trigger": "education",
+    "label": "Changde to Wuhan"
    }
   },
   {
@@ -55,6 +127,30 @@
     "type": "LineString",
     "coordinates": [
      [
+      114.305,
+      30.593
+     ],
+     [
+      114.89,
+      30.39
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m2b",
+    "person": "zhiyuan",
+    "year": 1959,
+    "approx": false,
+    "trigger": "industry",
+    "label": "Wuhan to Ezhou"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
       111.33,
       28.79
      ],
@@ -71,6 +167,30 @@
     "approx": true,
     "trigger": "restitution",
     "label": "Village to town"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      114.89,
+      30.39
+     ],
+     [
+      114.305,
+      30.593
+     ]
+    ]
+   },
+   "properties": {
+    "id": "m3b",
+    "person": "g3",
+    "year": 1991,
+    "approx": false,
+    "trigger": "city",
+    "label": "Ezhou to Wuhan"
    }
   },
   {
