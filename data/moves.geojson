@@ -19,8 +19,8 @@
    "properties": {
     "id": "m0",
     "person": "zhiyuan",
-    "year": 1943,
-    "approx": true,
+    "year": 1945,
+    "approx": false,
     "trigger": "war",
     "label": "Fleeing to Cili"
    }
@@ -43,8 +43,8 @@
    "properties": {
     "id": "m0b",
     "person": "zhiyuan",
-    "year": 1945,
-    "approx": false,
+    "year": 1946,
+    "approx": true,
     "trigger": "war",
     "label": "Back to Taoyuan"
    }

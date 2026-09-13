@@ -32,7 +32,7 @@
       marks: [
         { year: 1910, label: "1910", text: "Born in the countryside of Taoyuan County, the year before the empire falls." },
         { from: 1928, to: 1942, label: "1930s", text: "With higher education and his parents’ savings behind him, he grows the family’s farmland. The Li household becomes one of the known landlord families of the area." },
-        { from: 1943, to: 1945, label: "During the war", text: "The family flees to Cili County, leaving its property behind, and returns in 1945. Year of flight not recorded." },
+        { year: 1945, label: "1945", text: "The family flees to Cili County for about six months, leaving its property behind." },
         { year: 1951, label: "1951", text: "Land reform: the family is classified as landlords, the property is confiscated, and he is imprisoned." },
         { from: 1955, to: 1958, label: "1955-1958", text: "Released from prison and returned to Taoyuan for three years of labour reform." },
         { year: 1981, label: "1981", text: "His status is restored and he retires. His eldest son reconnects with him after eighteen years." }
@@ -43,7 +43,7 @@
       life: [[1939, 2000, "known"], [2000, 2015, "unknown"]],
       marks: [
         { year: 1939, label: "1939", text: "Born the eldest son in a village in Taoyuan, in the middle of the war." },
-        { year: 1944, label: "1944", text: "Starts at a private school in Cili County, where the family has fled." },
+        { year: 1944, label: "1944", text: "Starts at a private school in the home village. After six months as a refugee in Cili in 1945, he returns to it." },
         { from: 1951, to: 1955, label: "1951-1955", text: "The year the family loses everything, he finishes primary school and goes to middle school in Changde." },
         { from: 1955, to: 1959, label: "1955-1959", text: "Admitted at sixteen to an engineering college in Wuhan; studies construction engineering." },
         { from: 1963, to: 1981, label: "1963-1981", text: "Because of his father’s history, he cuts off contact with his family in Taoyuan for eighteen years." },

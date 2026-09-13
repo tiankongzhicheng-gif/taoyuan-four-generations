@@ -1,11 +1,11 @@
 ﻿person,place,from,to,approx,note
-hanqing,village,1910,1943,True,
-hanqing,cili,1943,1945,True,Fled the war with his family; year of flight not recorded.
-hanqing,village,1945,1951,True,
+hanqing,village,1910,1945,False,
+hanqing,cili,1945,1946,True,About six months in 1945.
+hanqing,village,1946,1951,True,
 hanqing,village,1955,1981,True,Released from prison in 1955; three years of labour reform in Taoyuan.
-zhiyuan,village,1939,1943,True,
-zhiyuan,cili,1943,1945,True,
-zhiyuan,village,1945,1951,False,
+zhiyuan,village,1939,1945,False,
+zhiyuan,cili,1945,1946,True,About six months in 1945.
+zhiyuan,village,1946,1951,True,
 zhiyuan,changde,1951,1955,False,
 zhiyuan,wuhan,1955,1959,False,
 zhiyuan,ezhou,1959,2000,False,Later years not recorded.

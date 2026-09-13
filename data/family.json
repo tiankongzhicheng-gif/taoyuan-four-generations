@@ -27,7 +27,7 @@
    "born_approx": false,
    "sex": "M",
    "role": "Eldest son (grandfather)",
-   "education": "Private school in Cili; primary school in Taoyuan; middle school in Changde; engineering college in Wuhan, 1955-1959",
+   "education": "Private school and primary school in Taoyuan; middle school in Changde; engineering college in Wuhan, 1955-1959",
    "occupation": "Technician to senior engineer at a steel plant in Ezhou, 1959-2000",
    "note": "Cut off contact with his family in Taoyuan from 1963 to 1981."
   },
@@ -227,21 +227,21 @@
    "person": "hanqing",
    "place": "village",
    "from": 1910,
-   "to": 1943,
-   "approx": true
+   "to": 1945,
+   "approx": false
   },
   {
    "person": "hanqing",
    "place": "cili",
-   "from": 1943,
-   "to": 1945,
+   "from": 1945,
+   "to": 1946,
    "approx": true,
-   "note": "Fled the war with his family; year of flight not recorded."
+   "note": "About six months in 1945."
   },
   {
    "person": "hanqing",
    "place": "village",
-   "from": 1945,
+   "from": 1946,
    "to": 1951,
    "approx": true
   },
@@ -257,22 +257,23 @@
    "person": "zhiyuan",
    "place": "village",
    "from": 1939,
-   "to": 1943,
-   "approx": true
+   "to": 1945,
+   "approx": false
   },
   {
    "person": "zhiyuan",
    "place": "cili",
-   "from": 1943,
-   "to": 1945,
-   "approx": true
+   "from": 1945,
+   "to": 1946,
+   "approx": true,
+   "note": "About six months in 1945."
   },
   {
    "person": "zhiyuan",
    "place": "village",
-   "from": 1945,
+   "from": 1946,
    "to": 1951,
-   "approx": false
+   "approx": true
   },
   {
    "person": "zhiyuan",
@@ -406,11 +407,11 @@
    ],
    "from": "village",
    "to": "cili",
-   "year": 1943,
-   "approx": true,
+   "year": 1945,
+   "approx": false,
    "trigger": "war",
    "label": "Fleeing to Cili",
-   "text": "During the war against Japan the family flees west to Cili County, leaving its property behind. Year not recorded."
+   "text": "In 1945 the family flees west to Cili County for about six months, leaving its property behind."
   },
   {
    "id": "m0b",
@@ -420,11 +421,11 @@
    ],
    "from": "cili",
    "to": "village",
-   "year": 1945,
-   "approx": false,
+   "year": 1946,
+   "approx": true,
    "trigger": "war",
    "label": "Back to Taoyuan",
-   "text": "The war ends and the family returns home to run its property again."
+   "text": "After about half a year they come home, and the eldest son goes back to private school in the village."
   },
   {
    "id": "m1",
@@ -547,6 +548,15 @@
    "lens": "war",
    "label": "War against Japan",
    "text": "Fighting reaches Changde, the prefecture that includes Taoyuan, in 1943. Many families flee west into the mountains."
+  },
+  {
+   "id": "e1945",
+   "from": 1945,
+   "to": 1945,
+   "scope": "national",
+   "lens": "war",
+   "label": "Battle of West Hunan",
+   "text": "Japan's last major offensive in Hunan is fought in the west of the province from April to June 1945."
   },
   {
    "id": "e1949",
@@ -712,27 +722,38 @@
    ]
   },
   {
-   "id": "f1943",
-   "from": 1943,
+   "id": "f1944",
+   "from": 1944,
+   "to": 1944,
+   "scope": "family",
+   "lens": "education",
+   "label": "Private school",
+   "text": "At five, the eldest son starts at a private school in the home village.",
+   "persons": [
+    "zhiyuan"
+   ]
+  },
+  {
+   "id": "f1945a",
+   "from": 1945,
    "to": 1945,
    "scope": "family",
    "lens": "war",
-   "label": "Refugees in Cili",
-   "text": "The family flees to Cili County, leaving its property behind. At five, the eldest son starts at a private school there.",
+   "label": "Six months as refugees",
+   "text": "The family flees to Cili County for about half a year, leaving its property behind.",
    "persons": [
     "hanqing",
     "zhiyuan"
-   ],
-   "approx": true
+   ]
   },
   {
    "id": "f1945",
-   "from": 1945,
+   "from": 1946,
    "to": 1949,
    "scope": "family",
    "lens": "family",
    "label": "Home again",
-   "text": "Back in Taoyuan, the family runs its property again and the eldest son continues school.",
+   "text": "Back in Taoyuan, the family runs its property again and the eldest son returns to private school, then primary school.",
    "persons": [
     "hanqing",
     "zhiyuan"

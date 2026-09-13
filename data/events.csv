@@ -1,6 +1,7 @@
 ﻿id,from,to,scope,lens,label,text,persons,approx
 e1911,1911,1912,national,politics,End of the empire,The Xinhai Revolution ends the Qing dynasty; the Republic of China is founded in 1912.,,
 e1937,1937,1945,national,war,War against Japan,"Fighting reaches Changde, the prefecture that includes Taoyuan, in 1943. Many families flee west into the mountains.",,
+e1945,1945,1945,national,war,Battle of West Hunan,Japan's last major offensive in Hunan is fought in the west of the province from April to June 1945.,,
 e1949,1949,1949,national,politics,Liberation of Changde and Taoyuan,"The People's Republic is founded in October 1949. The counties around Changde, Taoyuan among them, come under the new government between mid-July and early August 1949.",,
 e1950b,1950,1950,national,land reform,Rent and interest reduction,"Before land redistribution, rents and loan interest owed to landlords are cut.",,
 e1950,1950,1952,national,land reform,Land reform,Hunan's land reform runs from the winter of 1950 to the spring of 1952. Land is redistributed and every rural household receives a class label.,,
@@ -18,8 +19,9 @@ e2011,2011,2011,national,urbanization,Urban majority,"For the first time, more t
 f1910,1910,1910,family,family,Li Hanqing born,Born in the countryside of Taoyuan County.,hanqing,
 f1930,1928,1942,family,family,Estate grows,"With higher education and his parents' savings, he expands the family farmland; the household becomes a known landlord family.",hanqing,True
 f1939,1939,1939,family,family,Li Zhiyuan born,"The eldest son is born in the home village, in the middle of the war.",zhiyuan,
-f1943,1943,1945,family,war,Refugees in Cili,"The family flees to Cili County, leaving its property behind. At five, the eldest son starts at a private school there.",hanqing;zhiyuan,True
-f1945,1945,1949,family,family,Home again,"Back in Taoyuan, the family runs its property again and the eldest son continues school.",hanqing;zhiyuan,
+f1944,1944,1944,family,education,Private school,"At five, the eldest son starts at a private school in the home village.",zhiyuan,
+f1945a,1945,1945,family,war,Six months as refugees,"The family flees to Cili County for about half a year, leaving its property behind.",hanqing;zhiyuan,
+f1945,1946,1949,family,family,Home again,"Back in Taoyuan, the family runs its property again and the eldest son returns to private school, then primary school.",hanqing;zhiyuan,
 f1951,1951,1951,family,land reform,Confiscation and imprisonment,"Land reform reaches the family. The property is confiscated, the household is left bankrupt, and Li Hanqing is imprisoned. His son finishes primary school and leaves for middle school in Changde.",hanqing;zhiyuan;zhiqing;zhiping;zhilan;zhikang;zhimei,
 f1955,1955,1955,family,education,"College, and release","The eldest son, sixteen, enters an engineering college in Wuhan. The same year his father is released from prison and returned to Taoyuan for three years of labour reform.",zhiyuan;hanqing,
 f1956,1956,1956,family,education,Eldest daughter to Changsha,The eldest daughter leaves to study in Changsha. The four younger siblings stay and farm.,zhiqing;zhiping;zhilan;zhikang;zhimei,True
