@@ -1,0 +1,34 @@
+{
+ "note": "Keyword codebook defined by the author: four dimensions, generations 2 to 4. Terms joined with / are counted together. Generation 1 is not included because almost all of that generation has died and cannot be interviewed.",
+ "generations": {
+  "g2": {"label": "Generation 2", "who": "Grandparents' generation", "years": "1930s-1980s"},
+  "g3": {"label": "Generation 3", "who": "Parents' generation", "years": "1970s-2000s"},
+  "g4": {"label": "Generation 4", "who": "My generation", "years": "2000s-today"}
+ },
+ "dimensions": [
+  {"id": "fear", "label": "Fear and risk", "zh": "恐惧 / 风险", "question": "What did this generation worry about most?",
+   "codes": {
+    "g2": [["成分", "class label"], ["地主", "landlord"], ["没收", "confiscation"], ["政治", "politics"], ["困难", "hardship"], ["破产", "bankruptcy"], ["失学", "losing schooling"], ["劳教", "labour re-education"], ["断绝联系", "cutting off contact"], ["战争", "war"]],
+    "g3": [["稳定", "stability"], ["工作", "work"], ["失业", "unemployment"], ["收入", "income"], ["住房", "housing"], ["房子", "a home"], ["房价", "house prices"], ["孩子教育", "children's education"], ["养老", "old-age care"], ["竞争", "competition"]],
+    "g4": [["压力", "pressure"], ["竞争", "competition"], ["内卷", "involution"], ["就业", "employment"], ["工作", "work"], ["未来", "the future"], ["房子", "a home"], ["房贷", "mortgage"], ["收入", "income"], ["焦虑", "anxiety"], ["不确定", "uncertainty"]]
+   }},
+  {"id": "mobility", "label": "Mobility and agency", "zh": "流动 / 向上", "question": "What helped them change their lives?",
+   "codes": {
+    "g2": [["读书", "studying"], ["学习", "learning"], ["大学", "university"], ["考试", "exams"], ["学校", "school"], ["知识", "knowledge"], ["技术", "technical skill"], ["专业", "field of study"], ["工作", "work"], ["工程", "engineering"], ["建筑", "construction"], ["工厂", "factory"]],
+    "g3": [["工作", "work"], ["教育", "education"], ["读书", "studying"], ["大学", "university"], ["高考", "entrance exam"], ["城市", "the city"], ["工资", "wages"], ["收入", "income"], ["发展", "development"], ["机会", "opportunity"], ["买房", "buying a home"], ["定居", "settling down"]],
+    "g4": [["大学", "university"], ["留学", "studying abroad"], ["出国", "going abroad"], ["专业", "major"], ["申请", "applications"], ["成绩", "grades"], ["GPA", "GPA"], ["实习", "internships"], ["就业", "employment"], ["机会", "opportunity"], ["海外", "overseas"], ["身份", "identity, status"]]
+   }},
+  {"id": "migration", "label": "Migration", "zh": "迁徙", "question": "Why did they leave where they were?",
+   "codes": {
+    "g2": [["桃源", "Taoyuan"], ["武汉", "Wuhan"], ["常德", "Changde"], ["慈利", "Cili"], ["长沙", "Changsha"], ["鄂州", "Ezhou"], ["逃难", "fleeing"], ["离开", "leaving"], ["求学", "going away to study"], ["回家/回乡", "going home"], ["联系", "keeping in touch"]],
+    "g3": [["武汉", "Wuhan"], ["城市", "the city"], ["城镇", "towns"], ["农村", "the countryside"], ["搬家", "moving house"], ["工作", "work"], ["单位", "work unit"], ["买房", "buying a home"], ["老家", "home village"], ["家乡", "hometown"]],
+    "g4": [["留学", "studying abroad"], ["出国", "going abroad"], ["海外", "overseas"], ["加拿大", "Canada"], ["美国", "the United States"], ["大学", "university"], ["申请", "applications"], ["工作", "work"], ["就业", "employment"], ["身份", "identity, status"], ["移民", "emigration"], ["回国", "returning to China"]]
+   }},
+  {"id": "history", "label": "Historical and social change", "zh": "历史 / 社会变化", "question": "Which words tie the story to its times?",
+   "codes": {
+    "g2": [["抗日战争", "war against Japan"], ["解放", "liberation"], ["土地改革", "land reform"], ["减租减息", "rent and interest reduction"], ["阶级斗争", "class struggle"], ["政治运动", "political campaigns"], ["落实政策", "restitution policy"]],
+    "g3": [["改革开放", "reform and opening"], ["高考恢复", "exam restored"], ["城市化", "urbanization"], ["市场经济", "market economy"], ["经济发展", "economic growth"], ["住房改革", "housing reform"]],
+    "g4": [["全球化", "globalization"], ["互联网", "the internet"], ["留学潮", "study-abroad wave"], ["疫情", "the pandemic"], ["AI", "AI"], ["科技", "technology"], ["就业竞争", "job competition"]]
+   }}
+ ]
+}

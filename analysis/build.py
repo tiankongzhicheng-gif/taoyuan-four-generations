@@ -3,19 +3,16 @@
 Outputs (all in data/):
   persons.csv, places.csv, residences.csv, moves.csv, events.csv, relations.csv
   places.geojson, moves.geojson
-  keyness.json   log-likelihood keyness per generation
-  family.js      everything above as globals for the page
+  family.js      family data plus data/mined.json (from analysis/mine.py) as globals for the page
 
 Run:  python analysis/build.py
 """
 import csv
 import json
-import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-LL_CRITICAL = 3.84  # p < 0.05, one degree of freedom
 
 
 def write_csv(name, rows, fields):
@@ -24,55 +21,6 @@ def write_csv(name, rows, fields):
         w.writeheader()
         for r in rows:
             w.writerow({k: (";".join(v) if isinstance(v, list) else v) for k, v in r.items()})
-
-
-def log_likelihood(a, b, c, d):
-    """Dunning log-likelihood for a term seen a times in c target tokens and b times in d reference tokens."""
-    e1 = c * (a + b) / (c + d)
-    e2 = d * (a + b) / (c + d)
-    ll = 0.0
-    if a:
-        ll += a * math.log(a / e1)
-    if b:
-        ll += b * math.log(b / e2)
-    return 2 * ll
-
-
-def keyness(block, top=8):
-    corpora = block["corpora"]
-    result = {"notice": block["notice"], "critical": LL_CRITICAL, "generations": [], "shared": []}
-    for gid, meta in corpora.items():
-        c = meta["tokens"]
-        d = sum(m["tokens"] for k, m in corpora.items() if k != gid)
-        rows = []
-        for t in block["terms"]:
-            a = t["counts"][gid]
-            b = sum(v for k, v in t["counts"].items() if k != gid)
-            ll = log_likelihood(a, b, c, d)
-            over = (a / c) > (b / d)
-            rows.append({
-                "zh": t["zh"], "py": t["py"], "en": t["en"], "count": a,
-                "per10k": round(a / c * 10000, 1), "ref_per10k": round(b / d * 10000, 1),
-                "ll": round(ll if over else -ll, 1),
-            })
-        rows = [r for r in rows if r["ll"] >= LL_CRITICAL]
-        rows.sort(key=lambda r: r["ll"], reverse=True)
-        result["generations"].append({"id": gid, **meta, "terms": rows[:top]})
-
-    # terms no generation uses significantly more than the others
-    for t in block["terms"]:
-        best = 0.0
-        for gid, meta in corpora.items():
-            c = meta["tokens"]
-            d = sum(m["tokens"] for k, m in corpora.items() if k != gid)
-            a = t["counts"][gid]
-            b = sum(v for k, v in t["counts"].items() if k != gid)
-            if (a / c) > (b / d):
-                best = max(best, log_likelihood(a, b, c, d))
-        if best < 15 and sum(t["counts"].values()) >= 60:
-            per10k = {gid: round(t["counts"][gid] / m["tokens"] * 10000, 1) for gid, m in corpora.items()}
-            result["shared"].append({"zh": t["zh"], "py": t["py"], "en": t["en"], "max_ll": round(best, 1), "per10k": per10k})
-    return result
 
 
 def main():
@@ -107,15 +55,15 @@ def main():
         } for m in fam["moves"]],
     }, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    key = keyness(fam["keywords_simulated"])
-    (DATA / "keyness.json").write_text(json.dumps(key, ensure_ascii=False, indent=1), encoding="utf-8")
+    mined_path = DATA / "mined.json"
+    mined = json.loads(mined_path.read_text(encoding="utf-8")) if mined_path.exists() else None
+    stale = DATA / "keyness.json"
+    if stale.exists():
+        stale.unlink()
 
-    js = "window.FAMILY = " + json.dumps(fam, ensure_ascii=False) + ";\nwindow.KEYNESS = " + json.dumps(key, ensure_ascii=False) + ";\n"
+    js = "window.FAMILY = " + json.dumps(fam, ensure_ascii=False) + ";\nwindow.MINED = " + json.dumps(mined, ensure_ascii=False) + ";\n"
     (DATA / "family.js").write_text(js, encoding="utf-8")
-
-    for g in key["generations"]:
-        print(g["label"], " ".join(f'{t["zh"]}({t["ll"]})' for t in g["terms"]))
-    print("shared:", " ".join(f'{t["zh"]}({t["max_ll"]})' for t in key["shared"]))
+    print("family.js written;", "mined.json included" if mined else "no mined.json yet (run analysis/mine.py)")
 
 
 if __name__ == "__main__":

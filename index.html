@@ -277,14 +277,18 @@
   </section>
 
   <section class="words" id="words" aria-labelledby="words-title">
-    <h2 id="words-title">The words each generation uses</h2>
-    <p class="section-sub">Keyness compares how often each generation uses a word with how often the other two do. Longer bars mean a word is more distinctive of that generation (log-likelihood; anything above 3.84 is significant at p &lt; 0.05).</p>
-    <div class="keyness" id="keyness"></div>
-    <p class="footnote">Illustrative counts. Interviews are in progress, and these figures will be replaced with counts from the transcripts.</p>
-    <p class="shared" id="shared"></p>
+    <h2 id="words-title">What each generation fears, relies on, and moves for</h2>
+    <p class="section-sub">Keywords in four dimensions, counted by NLP text mining for generations 2 to 4. Almost everyone in generation 1 has died, so that generation could not be interviewed and is not included.</p>
+    <div class="tabs" id="mined-tabs" role="tablist" aria-label="Dimension"></div>
+    <div class="keyness" id="mined" role="tabpanel"></div>
+    <p class="footnote" id="mined-meta"></p>
     <details class="table-view">
-      <summary>Show keyword counts as a table</summary>
-      <div class="table-scroll"><table id="keyness-table"></table></div>
+      <summary>Most frequent words in each generation’s corpus</summary>
+      <div class="top-grid" id="mined-top"></div>
+    </details>
+    <details class="table-view">
+      <summary>Show all keyword counts as a table</summary>
+      <div class="table-scroll"><table id="mined-table"></table></div>
     </details>
   </section>
 
@@ -299,9 +303,7 @@
         <h3>Data</h3>
         <p>Everything on the map, the network, and the charts comes from one structured file of people, places, residences, moves, events, and relationships. Years marked approx. are estimates placed for mapping. Download: <a href="data/persons.csv">people</a>, <a href="data/places.geojson">places (GeoJSON)</a>, <a href="data/moves.geojson">moves (GeoJSON)</a>, <a href="data/residences.csv">residences</a>, <a href="data/events.csv">events</a>, <a href="data/relations.csv">relationships</a>, or <a href="data/family.json">everything (JSON)</a>.</p>
         <h3>Keyword analysis</h3>
-        <p>The keyword section uses log-likelihood keyness: each generation’s word counts are compared with the other two generations combined, and only words above the 3.84 significance threshold are shown. The method is in place; the counts shown are illustrative until the interview transcripts are complete. The analysis script is <a href="analysis/build.py">analysis/build.py</a>.</p>
-        <h3>What comes next</h3>
-        <p>Recorded interviews with each living generation, asking everyone the same questions: why they moved, what they feared, what they valued. Transcripts will replace the illustrative counts and fill in the approximate years.</p>
+        <p>Each generation’s texts are segmented with jieba, a Chinese NLP tokenizer, after every keyword in the codebook has been added to its dictionary so that terms stay whole. The script then counts exact token matches and the most frequent nouns and verbs. The texts themselves are not published; the site shows only counts and corpus sizes. The script is <a href="analysis/mine.py">analysis/mine.py</a> and the codebook is <a href="analysis/codebook.json">analysis/codebook.json</a>.</p>
         <h3>A note on perspective</h3>
         <p>This history is told by the youngest generation. It is shaped by what I was told and by what the older generations chose to pass on. That filtering is part of the subject, not a flaw to hide.</p>
       </div>
