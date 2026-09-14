@@ -525,6 +525,18 @@ input[type="range"] { width: 100%; accent-color: var(--violet); height: 2.75rem;
   .tree__line li + li { flex-direction: column; align-items: flex-start; }
 }
 
+
+.chapter--g3 .plate--wide img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 12%; max-height: 40rem; }
+.community { margin-top: var(--space-5); }
+.community__title { font-size: clamp(1.8rem, 3vw, 2.3rem); font-weight: 800; margin: 0 0 var(--space-1); }
+.community__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.community__list li { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: var(--space-3); padding-block: var(--space-3); border-top: 2px solid var(--ink); }
+.community__list li div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3); }
+.community__list p { margin: 0; max-width: 60ch; }
+.community__list b { font-family: var(--display); font-weight: 800; font-size: 1.2rem; }
+.community__year { font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; color: var(--violet); font-variant-numeric: tabular-nums; }
+@media (max-width: 860px) { .community__list li, .community__list li div { grid-template-columns: 1fr; gap: var(--space-1); } }
+
 /* ---------- Network ---------- */
 
 .network { padding-block: var(--space-6) var(--space-5); max-width: 78rem; margin: 0 auto; }

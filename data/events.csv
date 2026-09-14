@@ -6,8 +6,10 @@ e1949,1949,1949,national,politics,Liberation of Changde and Taoyuan,"The People'
 e1950b,1950,1950,national,land reform,Rent and interest reduction,"Before land redistribution, rents and loan interest owed to landlords are cut.",,
 e1950,1950,1952,national,land reform,Land reform,Hunan's land reform runs from the winter of 1950 to the spring of 1952. Land is redistributed and every rural household receives a class label.,,
 e1953,1953,1957,national,industrialization,First Five-Year Plan,State-led heavy industry. Wuhan becomes a major base for steel and construction; the Wuhan Yangtze River Bridge opens in 1957.,,
+e1955w,1955,1958,national,industrialization,Building Wuhan Iron and Steel,"From October 1955 about 100,000 builders from across China arrive in Wuhan to build its steel works, backed by 18 provinces, 45 cities and more than 1,000 factories. The first blast furnace produces iron in September 1958.",,
 e1958,1958,1958,national,urbanization,Household registration rules,The 1958 hukou regulations fix each person as rural or urban and sharply limit moves from countryside to city.,,
 e1958b,1958,1983,national,land reform,People's communes,Rural land and labour are organized into collectives until the early 1980s.,,
+e1961,1961,1963,national,urbanization,Workers sent back to the land,"From 1961 to mid-1963 the state cuts 18.87 million workers and reduces the urban population by 26 million, mostly people recruited from the countryside since 1958.",,
 e1966,1966,1976,national,politics,Cultural Revolution,Families with a landlord label remain under political pressure.,,
 e1977,1977,1977,national,education,University entrance exam returns,The national gaokao is restored after eleven years.,,
 e1978,1978,1978,national,industrialization,Reform and opening,Market reforms begin; the economy starts decades of fast growth.,,
@@ -32,4 +34,4 @@ f1981,1981,1981,family,land reform,"Status restored, contact resumed",Li Hanqing
 f1982,1982,1982,family,land reform,Property partly returned,Part of the property is returned and the family moves into the local town.,zhikang;zhimei;zhiping,True
 f1991,1991,1991,family,urbanization,Ezhou to Wuhan,The third generation moves to the provincial capital and settles there.,g3,
 f2000,1998,2026,family,urbanization,Urban middle class,The third generation's careers grow with the economy in Wuhan.,g3,
-f2021,2021,2026,family,education,Study abroad,"With family support, the fourth generation studies in Canada.",g4;g3,True
+f2021,2022,2026,family,education,Study abroad,"With family support, the fourth generation studies in Canada: Montreal in 2022, Stanstead in 2023, Waterloo in 2026.",g4;g3,False

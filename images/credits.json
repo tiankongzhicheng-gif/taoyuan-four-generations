@@ -79,16 +79,6 @@
   "w": 500,
   "h": 360
  },
- "street-1984": {
-  "title": "Hangzhou street scene 1984.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Hangzhou_street_scene_1984.jpg",
-  "license": "CC BY-SA 4.0",
-  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "artist": "BabelStone",
-  "date": "1984-10",
-  "w": 1800,
-  "h": 1202
- },
  "wuhan-skyline-2018": {
   "title": "Skyline of Wuhan.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Skyline_of_Wuhan.jpg",
@@ -118,5 +108,15 @@
   "date": "1900/1919",
   "w": 1800,
   "h": 1311
+ },
+ "wuhan-primary-school-1980s": {
+  "title": "蔡甸一小1980年代校门.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:%E8%94%A1%E7%94%B8%E4%B8%80%E5%B0%8F1980%E5%B9%B4%E4%BB%A3%E6%A0%A1%E9%97%A8.jpg",
+  "license": "CC0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "artist": "Kitsuhontou (restored and colorized)",
+  "date": "1980s",
+  "w": 1280,
+  "h": 1938
  }
 }

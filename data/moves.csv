@@ -7,6 +7,6 @@ m2,zhiqing,,village,changsha,1956,True,education,Taoyuan to Changsha,The eldest 
 m2b,zhiyuan,,wuhan,ezhou,1959,False,industry,Wuhan to Ezhou,"After graduating he joins a steel plant in Ezhou as a technician, and stays for forty-one years."
 m3,zhikang,zhimei,village,town,1982,True,restitution,Village to town,Early 1980s. Part of the property is returned and the family moves from the village into the local town.
 m3b,g3,,ezhou,wuhan,1991,False,city,Ezhou to Wuhan,The third generation moves to Wuhan and settles there.
-m4,g4,,wuhan,montreal,2021,True,study abroad,Wuhan to Montreal,The fourth generation goes abroad to study.
-m5,g4,,montreal,stanstead,2022,True,study abroad,Montreal to Stanstead,"Secondary school in Stanstead, Quebec."
+m4,g4,,wuhan,montreal,2022,False,study abroad,Wuhan to Montreal,The fourth generation goes abroad to study.
+m5,g4,,montreal,stanstead,2023,False,study abroad,Montreal to Stanstead,"Secondary school in Stanstead, Quebec."
 m6,g4,,stanstead,waterloo,2026,False,study abroad,Stanstead to Waterloo,"University in Waterloo, Ontario."

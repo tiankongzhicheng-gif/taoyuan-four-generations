@@ -1,5 +1,5 @@
 {
- "corpus_label": "Family texts compiled by the author",
+ "corpus_label": "Interviews with family members, transcribed (transcripts kept private)",
  "generated": "2026-09-13",
  "method": "jieba segmentation with codebook terms added to the dictionary; exact token matching",
  "note": "Keyword codebook defined by the author: four dimensions, generations 2 to 4. Terms joined with / are counted together. Generation 1 is not included because almost all of that generation has died and cannot be interviewed.",

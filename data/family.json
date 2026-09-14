@@ -26,7 +26,7 @@
    "born": 1939,
    "born_approx": false,
    "sex": "M",
-   "role": "Eldest son (grandfather)",
+   "role": "Eldest son (maternal grandfather)",
    "education": "Private school and primary school in Taoyuan; middle school in Changde; engineering college in Wuhan, 1955-1959",
    "occupation": "Technician to senior engineer at a steel plant in Ezhou, 1959-2000",
    "note": "Cut off contact with his family in Taoyuan from 1963 to 1981."
@@ -121,13 +121,13 @@
    "name": "The author",
    "zh": "",
    "generation": 4,
-   "born": 2007,
-   "born_approx": true,
+   "born": 2008,
+   "born_approx": false,
    "sex": "",
    "role": "Fourth generation",
    "education": "Secondary school abroad; university in Waterloo",
    "occupation": "Student",
-   "note": "Account says early 2000s."
+   "note": ""
   }
  ],
  "places": [
@@ -372,23 +372,23 @@
   {
    "person": "g4",
    "place": "wuhan",
-   "from": 2007,
-   "to": 2021,
-   "approx": true
+   "from": 2008,
+   "to": 2022,
+   "approx": false
   },
   {
    "person": "g4",
    "place": "montreal",
-   "from": 2021,
-   "to": 2022,
-   "approx": true
+   "from": 2022,
+   "to": 2023,
+   "approx": false
   },
   {
    "person": "g4",
    "place": "stanstead",
-   "from": 2022,
+   "from": 2023,
    "to": 2026,
-   "approx": true
+   "approx": false
   },
   {
    "person": "g4",
@@ -501,8 +501,8 @@
    "person": "g4",
    "from": "wuhan",
    "to": "montreal",
-   "year": 2021,
-   "approx": true,
+   "year": 2022,
+   "approx": false,
    "trigger": "study abroad",
    "label": "Wuhan to Montreal",
    "text": "The fourth generation goes abroad to study."
@@ -512,8 +512,8 @@
    "person": "g4",
    "from": "montreal",
    "to": "stanstead",
-   "year": 2022,
-   "approx": true,
+   "year": 2023,
+   "approx": false,
    "trigger": "study abroad",
    "label": "Montreal to Stanstead",
    "text": "Secondary school in Stanstead, Quebec."
@@ -595,6 +595,15 @@
    "text": "State-led heavy industry. Wuhan becomes a major base for steel and construction; the Wuhan Yangtze River Bridge opens in 1957."
   },
   {
+   "id": "e1955w",
+   "from": 1955,
+   "to": 1958,
+   "scope": "national",
+   "lens": "industrialization",
+   "label": "Building Wuhan Iron and Steel",
+   "text": "From October 1955 about 100,000 builders from across China arrive in Wuhan to build its steel works, backed by 18 provinces, 45 cities and more than 1,000 factories. The first blast furnace produces iron in September 1958."
+  },
+  {
    "id": "e1958",
    "from": 1958,
    "to": 1958,
@@ -611,6 +620,15 @@
    "lens": "land reform",
    "label": "People's communes",
    "text": "Rural land and labour are organized into collectives until the early 1980s."
+  },
+  {
+   "id": "e1961",
+   "from": 1961,
+   "to": 1963,
+   "scope": "national",
+   "lens": "urbanization",
+   "label": "Workers sent back to the land",
+   "text": "From 1961 to mid-1963 the state cuts 18.87 million workers and reduces the urban population by 26 million, mostly people recruited from the countryside since 1958."
   },
   {
    "id": "e1966",
@@ -899,17 +917,17 @@
   },
   {
    "id": "f2021",
-   "from": 2021,
+   "from": 2022,
    "to": 2026,
    "scope": "family",
    "lens": "education",
    "label": "Study abroad",
-   "text": "With family support, the fourth generation studies in Canada.",
+   "text": "With family support, the fourth generation studies in Canada: Montreal in 2022, Stanstead in 2023, Waterloo in 2026.",
    "persons": [
     "g4",
     "g3"
    ],
-   "approx": true
+   "approx": false
   }
  ],
  "groups": [

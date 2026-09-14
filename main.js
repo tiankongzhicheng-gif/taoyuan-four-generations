@@ -62,10 +62,10 @@
     },
     {
       name: "My generation", sub: "Generation 4, b. 2000s",
-      life: [[2007, 2026, "known"]],
+      life: [[2008, 2026, "known"]],
       marks: [
-        { year: 2007, label: "Early 2000s", text: "Born into fast growth and fierce competition, the years people now call involution." },
-        { from: 2021, to: 2026, label: "Recent years", text: "With family support, study abroad: from Wuhan to Montreal, Stanstead, and Waterloo." }
+        { year: 2008, label: "2008", text: "Born into fast growth and fierce competition, the years people now call involution." },
+        { from: 2022, to: 2026, label: "2022 to today", text: "Study abroad with family support: Montreal in 2022, Stanstead in 2023, Waterloo in 2026." }
       ]
     },
     {
@@ -183,7 +183,7 @@
     ["A man reads the Land Reform Law, 1950", "Unknown photographer", "Public domain", "https://commons.wikimedia.org/wiki/File:A_man_reads_the_Land_Reform_Law_of_PRC.jpg"],
     ["Gate of Wuhan No. 2 High School, 1950s", "Unknown photographer", "Public domain", "https://commons.wikimedia.org/wiki/File:1950%E5%B9%B4%E4%BB%A3%E7%9A%84%E6%AD%A6%E6%B1%89%E5%B8%82%E7%AC%AC%E4%BA%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1%E9%97%A8.jpg"],
     ["Panorama of old Changsha, Changsha City Museum (cropped)", "Gary Todd", "CC0", "https://commons.wikimedia.org/wiki/File:Panorama_of_Old_Changsha_(10113194574).jpg"],
-    ["Hangzhou street scene, 1984", "BabelStone", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Hangzhou_street_scene_1984.jpg"],
+    ["Primary school gate in Caidian, Wuhan, 1980s (restored and colorized)", "Kitsuhontou", "CC0", "https://commons.wikimedia.org/wiki/File:%E8%94%A1%E7%94%B8%E4%B8%80%E5%B0%8F1980%E5%B9%B4%E4%BB%A3%E6%A0%A1%E9%97%A8.jpg"],
     ["Skyline of Wuhan, 2018", "Majorantarktis", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Skyline_of_Wuhan.jpg"],
     ["University of Waterloo, Waterloo Campus, 2025", "JFVoll", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:University_of_Waterloo_(Waterloo_Campus)_-_Waterloo,_Ontario.jpg"]
   ];

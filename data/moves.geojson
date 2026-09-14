@@ -211,8 +211,8 @@
    "properties": {
     "id": "m4",
     "person": "g4",
-    "year": 2021,
-    "approx": true,
+    "year": 2022,
+    "approx": false,
     "trigger": "study abroad",
     "label": "Wuhan to Montreal"
    }
@@ -235,8 +235,8 @@
    "properties": {
     "id": "m5",
     "person": "g4",
-    "year": 2022,
-    "approx": true,
+    "year": 2023,
+    "approx": false,
     "trigger": "study abroad",
     "label": "Montreal to Stanstead"
    }
