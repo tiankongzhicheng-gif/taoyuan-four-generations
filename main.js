@@ -27,7 +27,7 @@
 
   const rows = [
     {
-      name: "Li Hanqing", sub: "Generation 1, b. 1910",
+      name: "Great-grandfather Li", sub: "Generation 1, b. 1910",
       life: [[1910, 1981, "known"], [1981, 1995, "unknown"]],
       marks: [
         { year: 1910, label: "1910", text: "Born in the countryside of Taoyuan County, the year before the empire falls." },
@@ -39,7 +39,7 @@
       ]
     },
     {
-      name: "Li Zhiyuan", sub: "Generation 2, b. 1939",
+      name: "Grandfather Li", sub: "Generation 2, b. 1939",
       life: [[1939, 2000, "known"], [2000, 2015, "unknown"]],
       marks: [
         { year: 1939, label: "1939", text: "Born the eldest son in a village in Taoyuan, in the middle of the war." },
@@ -129,7 +129,7 @@
         track.appendChild(btn);
       });
       // overlapping spans sit on two levels
-      if (row.name === "Li Zhiyuan") {
+      if (row.name === "Grandfather Li") {
         const spans = track.querySelectorAll(".span");
         if (spans[2]) spans[2].style.marginTop = "10px";
       }
@@ -143,19 +143,19 @@
   /* ---------------- Family tree ---------------- */
 
   const children = [
-    { order: "Eldest son", name: "Li Zhiyuan", zh: "李致远", tag: "School", fate: "College in Wuhan, then 41 years as an engineer at a steel plant in Ezhou.", school: true, line: true },
-    { order: "Eldest daughter", name: "Li Zhiqing", zh: "李致清", tag: "School", fate: "Studied in Changsha. Stayed, worked, and raised a family there.", school: true },
-    { order: "Second son", name: "Li Zhiping", zh: "李致平", tag: "Farming", fate: "Farmed in the home village." },
-    { order: "Second daughter", name: "Li Zhilan", zh: "李致兰", tag: "Married away", fate: "Married young and moved far from home." },
-    { order: "Third son", name: "Li Zhikang", zh: "李致康", tag: "Town work", fate: "Worked in the local town." },
-    { order: "Third daughter", name: "Li Zhimei", zh: "李致梅", tag: "Town work", fate: "Worked in the local town." },
-    { order: "A son", name: "Died young", tag: "", fate: "Birth order not recorded.", lost: true }
+    { order: "My grandfather", name: "Grandfather Li", zh: "外公", tag: "School", fate: "College in Wuhan, then 41 years as an engineer at a steel plant in Ezhou.", school: true, line: true },
+    { order: "Great-aunt", name: "Eldest daughter Li", zh: "长女", tag: "School", fate: "Studied in Changsha. Stayed, worked, and raised a family there.", school: true },
+    { order: "Great-uncle", name: "Second son Li", zh: "次子", tag: "Farming", fate: "Farmed in the home village." },
+    { order: "Great-aunt", name: "Second daughter Li", zh: "次女", tag: "Married away", fate: "Married young and moved far from home." },
+    { order: "Great-uncle", name: "Third son Li", zh: "三子", tag: "Town work", fate: "Worked in the local town." },
+    { order: "Great-aunt", name: "Third daughter Li", zh: "三女", tag: "Town work", fate: "Worked in the local town." },
+    { order: "Great-uncle", name: "A son who died young", tag: "", fate: "Birth order not recorded.", lost: true }
   ];
 
   function buildTree() {
     const tree = document.getElementById("tree");
     if (!tree) return;
-    tree.appendChild(el("div", "tree__root", `<strong>Li Hanqing <span class="zh" lang="zh-Hans">李翰卿</span></strong><span>Born 1910. Landlord in Taoyuan County.</span>`));
+    tree.appendChild(el("div", "tree__root", `<strong>Great-grandfather Li <span class="zh" lang="zh-Hans">外曾祖父</span></strong><span>Born 1910. Landlord in Taoyuan County.</span>`));
     const ul = el("ul", "tree__children");
     children.forEach((c) => {
       const cls = ["child", c.school ? "child--school" : "", c.lost ? "child--lost" : "", c.line ? "child--line" : ""].join(" ").trim();
@@ -170,7 +170,7 @@
     tree.appendChild(ul);
     const line = el("ol", "tree__line");
     line.setAttribute("aria-label", "The line this site follows");
-    line.innerHTML = "<li><b>Li Zhiyuan</b>&nbsp;in Ezhou</li><li>His children, b. 1973, Ezhou then Wuhan</li><li><b>The author</b>&nbsp;in Waterloo</li>";
+    line.innerHTML = "<li><b>Grandfather Li</b>&nbsp;in Ezhou</li><li>His children, b. 1973, Ezhou then Wuhan</li><li><b>The author</b>&nbsp;in Waterloo</li>";
     tree.appendChild(line);
     tree.appendChild(el("p", "tree__legend", "Only the eldest son and eldest daughter were old enough to be educated before 1949. The outlined card marks the line this site follows."));
   }

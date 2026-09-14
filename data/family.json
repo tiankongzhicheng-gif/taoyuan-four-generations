@@ -1,14 +1,14 @@
 {
  "meta": {
   "title": "Four Generations from Taoyuan: family data",
-  "source": "Two family accounts written down by the fourth generation, September 2026. Names of people, the home village, the college, and the steel plant are withheld or pseudonymous.",
+  "source": "Two family accounts written down by the fourth generation, September 2026. People are identified by family role and surname; the home village, the college, and the steel plant are not named.",
   "approximate_rule": "Fields marked approx are estimates placed for mapping; the family account gives no exact year."
  },
  "persons": [
   {
    "id": "hanqing",
-   "name": "Li Hanqing",
-   "zh": "李翰卿",
+   "name": "Great-grandfather Li",
+   "zh": "外曾祖父",
    "generation": 1,
    "born": 1910,
    "born_approx": false,
@@ -20,8 +20,8 @@
   },
   {
    "id": "zhiyuan",
-   "name": "Li Zhiyuan",
-   "zh": "李致远",
+   "name": "Grandfather Li",
+   "zh": "外公",
    "generation": 2,
    "born": 1939,
    "born_approx": false,
@@ -33,8 +33,8 @@
   },
   {
    "id": "zhiqing",
-   "name": "Li Zhiqing",
-   "zh": "李致清",
+   "name": "Eldest daughter Li",
+   "zh": "长女",
    "generation": 2,
    "born": null,
    "sex": "F",
@@ -45,8 +45,8 @@
   },
   {
    "id": "zhiping",
-   "name": "Li Zhiping",
-   "zh": "李致平",
+   "name": "Second son Li",
+   "zh": "次子",
    "generation": 2,
    "born": null,
    "sex": "M",
@@ -57,8 +57,8 @@
   },
   {
    "id": "zhilan",
-   "name": "Li Zhilan",
-   "zh": "李致兰",
+   "name": "Second daughter Li",
+   "zh": "次女",
    "generation": 2,
    "born": null,
    "sex": "F",
@@ -69,8 +69,8 @@
   },
   {
    "id": "zhikang",
-   "name": "Li Zhikang",
-   "zh": "李致康",
+   "name": "Third son Li",
+   "zh": "三子",
    "generation": 2,
    "born": null,
    "sex": "M",
@@ -81,8 +81,8 @@
   },
   {
    "id": "zhimei",
-   "name": "Li Zhimei",
-   "zh": "李致梅",
+   "name": "Third daughter Li",
+   "zh": "三女",
    "generation": 2,
    "born": null,
    "sex": "F",
@@ -708,7 +708,7 @@
    "to": 1910,
    "scope": "family",
    "lens": "family",
-   "label": "Li Hanqing born",
+   "label": "Great-grandfather Li born",
    "text": "Born in the countryside of Taoyuan County.",
    "persons": [
     "hanqing"
@@ -733,7 +733,7 @@
    "to": 1939,
    "scope": "family",
    "lens": "family",
-   "label": "Li Zhiyuan born",
+   "label": "Grandfather Li born",
    "text": "The eldest son is born in the home village, in the middle of the war.",
    "persons": [
     "zhiyuan"
@@ -784,7 +784,7 @@
    "scope": "family",
    "lens": "land reform",
    "label": "Confiscation and imprisonment",
-   "text": "Land reform reaches the family. The property is confiscated, the household is left bankrupt, and Li Hanqing is imprisoned. His son finishes primary school and leaves for middle school in Changde.",
+   "text": "Land reform reaches the family. The property is confiscated, the household is left bankrupt, and Great-grandfather Li is imprisoned. His son finishes primary school and leaves for middle school in Changde.",
    "persons": [
     "hanqing",
     "zhiyuan",
@@ -832,7 +832,7 @@
    "scope": "family",
    "lens": "industrialization",
    "label": "Forty-one years in steel",
-   "text": "Li Zhiyuan joins a steel plant in Ezhou as a technician and rises to senior engineer in building design, construction, and management, retiring in 2000.",
+   "text": "Grandfather Li joins a steel plant in Ezhou as a technician and rises to senior engineer in building design, construction, and management, retiring in 2000.",
    "persons": [
     "zhiyuan"
    ]
@@ -844,7 +844,7 @@
    "scope": "family",
    "lens": "land reform",
    "label": "Eighteen years of silence",
-   "text": "Because of his father's history, Li Zhiyuan cuts off contact with his family in Taoyuan. They do not speak again until 1981.",
+   "text": "Because of his father's history, Grandfather Li cuts off contact with his family in Taoyuan. They do not speak again until 1981.",
    "persons": [
     "zhiyuan",
     "hanqing"
@@ -870,7 +870,7 @@
    "scope": "family",
    "lens": "land reform",
    "label": "Status restored, contact resumed",
-   "text": "Li Hanqing's status is restored and he retires. His son reconnects with the family after eighteen years.",
+   "text": "Great-grandfather Li's status is restored and he retires. His son reconnects with the family after eighteen years.",
    "persons": [
     "hanqing",
     "zhiyuan"

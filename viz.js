@@ -119,9 +119,9 @@
         html += "</ul>";
       }
       const offMap = [];
-      if (year >= 1951 && year < 1955) offMap.push("Li Hanqing: in prison, location not recorded");
-      if (year > 1981 && year <= 1995) offMap.push("Li Hanqing: later years not recorded");
-      if (year > 1966 && year <= 1995) offMap.push("Li Zhilan: married far away, place not recorded");
+      if (year >= 1951 && year < 1955) offMap.push("Great-grandfather Li: in prison, location not recorded");
+      if (year > 1981 && year <= 1995) offMap.push("Great-grandfather Li: later years not recorded");
+      if (year > 1966 && year <= 1995) offMap.push("Second daughter Li: married far away, place not recorded");
       if (offMap.length) html += `<p class="where__off">${offMap.map(esc).join("<br>")}</p>`;
       const active = F.events.filter((e) => year >= e.from && year <= e.to);
       if (active.length) {
