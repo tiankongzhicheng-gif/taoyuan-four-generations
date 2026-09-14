@@ -498,9 +498,27 @@
   /* ================= Keyword marking demo ================= */
 
   const EXAMPLES = {
-    g2: "1951年土地改革，财产被没收，家里处于破产状态，生活困难。爷爷在家乡坚持学习，小学毕业后离开桃源到常德读书，1955年考入武汉的大学读建筑工程专业，毕业后到钢铁厂工作。",
-    g3: "我的父母1973年出生，赶上了改革开放和经济发展，接受了完整的教育，后来在武汉工作、买房、定居，最看重的是稳定和收入。",
-    g4: "我们这一代面对内卷和就业竞争，压力很大。很多人选择出国留学，申请海外的大学和专业，也在思考未来和身份。"
+    g2: "Land reform came in 1951. The property was confiscated and the family fell into bankruptcy and hardship. My grandfather kept studying, left Taoyuan for school in Changde, and in 1955 went to university in Wuhan to study engineering and construction. After graduating he found work at a factory.",
+    g3: "My parents were born in 1973. They grew up with reform and opening and economic growth, got a full education, and later settled in Wuhan, where they cared most about stability, income, and buying a home.",
+    g4: "My generation faces involution, competition, and pressure in finding a job. Many of us choose to study abroad, apply to universities and majors overseas, and think hard about the future and our identity."
+  };
+
+  // Extra English forms for codebook terms, keyed by the Chinese term.
+  const EN_EXTRA = {
+    "战争": ["wars", "wartime"], "逃难": ["flee", "fled", "fleeing", "refugee", "refugees"], "地主": ["landlords"],
+    "没收": ["confiscated", "confiscate"], "破产": ["bankrupt"], "困难": ["hardships", "difficulties"],
+    "读书": ["study", "studied", "studies"], "学习": ["learn", "learned", "learnt"], "大学": ["college", "colleges", "universities"],
+    "学校": ["schools"], "考试": ["exam"], "工作": ["job", "jobs", "career", "worked", "working"], "工程": ["engineer", "engineers"],
+    "教育": ["educated"], "城市": ["cities", "urban"], "留学": ["study abroad", "studied abroad"], "出国": ["abroad", "go abroad", "went abroad"],
+    "海外": ["overseas"], "美国": ["US", "U.S.", "America", "American"], "加拿大": ["Canadian"],
+    "移民": ["immigration", "immigrate", "emigrate", "emigrated"], "竞争": ["compete", "competitive"], "压力": ["stress", "stressed"],
+    "焦虑": ["anxious"], "就业": ["employed"], "实习": ["intern", "interns"], "申请": ["apply", "applied", "application"],
+    "成绩": ["grade", "score", "scores"], "专业": ["majors"], "房贷": ["mortgages"], "买房": ["buy a home", "bought a home", "buy a house", "bought a house"],
+    "房子": ["house", "houses", "apartment", "home"], "住房": ["housing"], "工资": ["salary", "salaries", "wage"], "稳定": ["stable", "security"],
+    "失业": ["unemployed", "jobless"], "养老": ["retirement", "pension"], "解放": ["liberated"], "改革开放": ["reform and opening up"],
+    "城市化": ["urbanisation"], "全球化": ["globalisation", "global"], "疫情": ["covid", "covid-19"], "科技": ["tech"], "互联网": ["online"],
+    "发展": ["develop", "growth"], "机会": ["opportunities", "chance", "chances"], "定居": ["settle", "settled"], "搬家": ["moved house", "move house"],
+    "农村": ["rural", "village"], "老家": ["hometown"], "离开": ["leave", "left"], "联系": ["contact", "in touch"]
   };
 
   function buildDemo() {
@@ -509,40 +527,52 @@
     const countsEl = document.getElementById("demo-counts");
     if (!input || !M) return;
 
-    const dims = M.dimensions.map((d, i) => ({ id: d.id, label: d.label, zh: d.zh, idx: i }));
-    const termDims = new Map();
+    const dims = M.dimensions.map((d) => ({ id: d.id, label: d.label, zh: d.zh }));
+    const zhDims = new Map();
+    const enDims = new Map();
+    const addTo = (map, key, dimId) => {
+      if (!key) return;
+      if (!map.has(key)) map.set(key, new Set());
+      map.get(key).add(dimId);
+    };
+    const englishForms = (gloss) => gloss.split(/,\s*|\s+or\s+/).map((x) => x.trim().replace(/^(the|a|an)\s+/i, "").toLowerCase()).filter(Boolean);
+
     M.dimensions.forEach((d) => Object.values(d.codes).forEach((rows) => rows.forEach((r) => {
       r.term.split("/").forEach((t) => {
-        if (!termDims.has(t)) termDims.set(t, new Set());
-        termDims.get(t).add(d.id);
+        addTo(zhDims, t, d.id);
+        (EN_EXTRA[t] || []).forEach((e) => addTo(enDims, e.toLowerCase(), d.id));
       });
+      englishForms(r.en).forEach((e) => addTo(enDims, e, d.id));
     })));
-    const terms = [...termDims.keys()].sort((a, b) => b.length - a.length);
-    const maxLen = terms[0] ? terms[0].length : 1;
-    const termSet = new Set(terms);
+
+    const escRe = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const byLen = (a, b) => b.length - a.length;
+    const enPattern = [...enDims.keys()].sort(byLen).map(escRe).join("|");
+    const zhPattern = [...zhDims.keys()].filter((t) => /[^\x00-\x7f]/.test(t)).sort(byLen).map(escRe).join("|");
+    const matcher = new RegExp(`(\\b(?:${enPattern})(?:es|s)?\\b)|(${zhPattern})`, "gi");
+
+    const dimsFor = (hit) => {
+      if (zhDims.has(hit)) return zhDims.get(hit);
+      const low = hit.toLowerCase();
+      return enDims.get(low) || enDims.get(low.replace(/es$/, "")) || enDims.get(low.replace(/s$/, ""));
+    };
 
     function run() {
       const text = input.value;
       const tally = Object.fromEntries(dims.map((d) => [d.id, 0]));
       let html = "";
-      let i = 0;
-      while (i < text.length) {
-        let hit = "";
-        for (let len = Math.min(maxLen, text.length - i); len >= 1; len--) {
-          const piece = text.substr(i, len);
-          if (termSet.has(piece)) { hit = piece; break; }
-        }
-        if (hit) {
-          const ds = [...termDims.get(hit)];
-          ds.forEach((id) => { tally[id] += 1; });
-          const names = ds.map((id) => dims.find((d) => d.id === id).label).join(", ");
-          html += `<mark class="dim-${ds[0]}" title="${esc(names)}">${esc(hit)}</mark>`;
-          i += hit.length;
-        } else {
-          html += esc(text[i]);
-          i += 1;
-        }
+      let last = 0;
+      for (const m of text.matchAll(matcher)) {
+        const hit = m[0];
+        const set = dimsFor(hit);
+        if (!set) continue;
+        const ds = [...set];
+        ds.forEach((id) => { tally[id] += 1; });
+        const names = ds.map((id) => dims.find((d) => d.id === id).label).join(", ");
+        html += esc(text.slice(last, m.index)) + `<mark class="dim-${ds[0]}" title="${esc(names)}">${esc(hit)}</mark>`;
+        last = m.index + hit.length;
       }
+      html += esc(text.slice(last));
       marked.innerHTML = text.trim() ? html.replace(/\n/g, "<br>") : `<span class="demo__empty">Marked text appears here.</span>`;
       countsEl.innerHTML = dims.map((d) => `<li class="dim-${d.id}"><i aria-hidden="true"></i>${esc(d.label)} <span lang="zh-Hans">${esc(d.zh)}</span><b>${tally[d.id]}</b></li>`).join("");
     }
