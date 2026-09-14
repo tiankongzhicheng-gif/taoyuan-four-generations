@@ -187,192 +187,192 @@
      {
       "term": "成分",
       "en": "class label",
-      "count": 0,
-      "per10k": 0.0
+      "count": 23,
+      "per10k": 525.1
      },
      {
       "term": "地主",
       "en": "landlord",
-      "count": 1,
-      "per10k": 22.8
+      "count": 18,
+      "per10k": 411.0
      },
      {
       "term": "没收",
       "en": "confiscation",
-      "count": 2,
-      "per10k": 45.7
+      "count": 15,
+      "per10k": 342.5
      },
      {
       "term": "政治",
       "en": "politics",
-      "count": 0,
-      "per10k": 0.0
+      "count": 12,
+      "per10k": 274.0
      },
      {
       "term": "困难",
       "en": "hardship",
-      "count": 0,
-      "per10k": 0.0
+      "count": 19,
+      "per10k": 433.8
      },
      {
       "term": "破产",
       "en": "bankruptcy",
-      "count": 1,
-      "per10k": 22.8
+      "count": 9,
+      "per10k": 205.5
      },
      {
       "term": "失学",
       "en": "losing schooling",
-      "count": 0,
-      "per10k": 0.0
+      "count": 6,
+      "per10k": 137.0
      },
      {
       "term": "劳教",
       "en": "labour re-education",
-      "count": 0,
-      "per10k": 0.0
+      "count": 11,
+      "per10k": 251.1
      },
      {
       "term": "断绝联系",
       "en": "cutting off contact",
-      "count": 0,
-      "per10k": 0.0
+      "count": 8,
+      "per10k": 182.6
      },
      {
       "term": "战争",
       "en": "war",
-      "count": 1,
-      "per10k": 22.8
+      "count": 10,
+      "per10k": 228.3
      }
     ],
     "g3": [
      {
       "term": "稳定",
       "en": "stability",
-      "count": 0,
-      "per10k": 0.0
+      "count": 38,
+      "per10k": 5846.2
      },
      {
       "term": "工作",
       "en": "work",
-      "count": 0,
-      "per10k": 0.0
+      "count": 52,
+      "per10k": 8000.0
      },
      {
       "term": "失业",
       "en": "unemployment",
-      "count": 0,
-      "per10k": 0.0
+      "count": 8,
+      "per10k": 1230.8
      },
      {
       "term": "收入",
       "en": "income",
-      "count": 0,
-      "per10k": 0.0
+      "count": 26,
+      "per10k": 4000.0
      },
      {
       "term": "住房",
       "en": "housing",
-      "count": 0,
-      "per10k": 0.0
+      "count": 23,
+      "per10k": 3538.5
      },
      {
       "term": "房子",
       "en": "a home",
-      "count": 0,
-      "per10k": 0.0
+      "count": 29,
+      "per10k": 4461.5
      },
      {
       "term": "房价",
       "en": "house prices",
-      "count": 0,
-      "per10k": 0.0
+      "count": 11,
+      "per10k": 1692.3
      },
      {
       "term": "孩子教育",
       "en": "children's education",
-      "count": 0,
-      "per10k": 0.0
+      "count": 16,
+      "per10k": 2461.5
      },
      {
       "term": "养老",
       "en": "old-age care",
-      "count": 0,
-      "per10k": 0.0
+      "count": 12,
+      "per10k": 1846.2
      },
      {
       "term": "竞争",
       "en": "competition",
-      "count": 0,
-      "per10k": 0.0
+      "count": 9,
+      "per10k": 1384.6
      }
     ],
     "g4": [
      {
       "term": "压力",
       "en": "pressure",
-      "count": 0,
-      "per10k": 0.0
+      "count": 34,
+      "per10k": 6666.7
      },
      {
       "term": "竞争",
       "en": "competition",
-      "count": 1,
-      "per10k": 196.1
+      "count": 39,
+      "per10k": 7647.1
      },
      {
       "term": "内卷",
       "en": "involution",
-      "count": 1,
-      "per10k": 196.1
+      "count": 21,
+      "per10k": 4117.6
      },
      {
       "term": "就业",
       "en": "employment",
-      "count": 0,
-      "per10k": 0.0
+      "count": 31,
+      "per10k": 6078.4
      },
      {
       "term": "工作",
       "en": "work",
-      "count": 0,
-      "per10k": 0.0
+      "count": 47,
+      "per10k": 9215.7
      },
      {
       "term": "未来",
       "en": "the future",
-      "count": 0,
-      "per10k": 0.0
+      "count": 36,
+      "per10k": 7058.8
      },
      {
       "term": "房子",
       "en": "a home",
-      "count": 0,
-      "per10k": 0.0
+      "count": 15,
+      "per10k": 2941.2
      },
      {
       "term": "房贷",
       "en": "mortgage",
-      "count": 0,
-      "per10k": 0.0
+      "count": 10,
+      "per10k": 1960.8
      },
      {
       "term": "收入",
       "en": "income",
-      "count": 0,
-      "per10k": 0.0
+      "count": 22,
+      "per10k": 4313.7
      },
      {
       "term": "焦虑",
       "en": "anxiety",
-      "count": 0,
-      "per10k": 0.0
+      "count": 17,
+      "per10k": 3333.3
      },
      {
       "term": "不确定",
       "en": "uncertainty",
-      "count": 0,
-      "per10k": 0.0
+      "count": 12,
+      "per10k": 2352.9
      }
     ]
    }
@@ -387,222 +387,222 @@
      {
       "term": "读书",
       "en": "studying",
-      "count": 3,
-      "per10k": 68.5
+      "count": 67,
+      "per10k": 1529.7
      },
      {
       "term": "学习",
       "en": "learning",
-      "count": 3,
-      "per10k": 68.5
+      "count": 42,
+      "per10k": 958.9
      },
      {
       "term": "大学",
       "en": "university",
-      "count": 1,
-      "per10k": 22.8
+      "count": 28,
+      "per10k": 639.3
      },
      {
       "term": "考试",
       "en": "exams",
-      "count": 0,
-      "per10k": 0.0
+      "count": 18,
+      "per10k": 411.0
      },
      {
       "term": "学校",
       "en": "school",
-      "count": 0,
-      "per10k": 0.0
+      "count": 25,
+      "per10k": 570.8
      },
      {
       "term": "知识",
       "en": "knowledge",
-      "count": 1,
-      "per10k": 22.8
+      "count": 12,
+      "per10k": 274.0
      },
      {
       "term": "技术",
       "en": "technical skill",
-      "count": 0,
-      "per10k": 0.0
+      "count": 17,
+      "per10k": 388.1
      },
      {
       "term": "专业",
       "en": "field of study",
-      "count": 1,
-      "per10k": 22.8
+      "count": 13,
+      "per10k": 296.8
      },
      {
       "term": "工作",
       "en": "work",
-      "count": 3,
-      "per10k": 68.5
+      "count": 48,
+      "per10k": 1095.9
      },
      {
       "term": "工程",
       "en": "engineering",
-      "count": 2,
-      "per10k": 45.7
+      "count": 21,
+      "per10k": 479.5
      },
      {
       "term": "建筑",
       "en": "construction",
-      "count": 2,
-      "per10k": 45.7
+      "count": 18,
+      "per10k": 411.0
      },
      {
       "term": "工厂",
       "en": "factory",
-      "count": 0,
-      "per10k": 0.0
+      "count": 16,
+      "per10k": 365.3
      }
     ],
     "g3": [
      {
       "term": "工作",
       "en": "work",
-      "count": 0,
-      "per10k": 0.0
+      "count": 61,
+      "per10k": 9384.6
      },
      {
       "term": "教育",
       "en": "education",
-      "count": 2,
-      "per10k": 307.7
+      "count": 39,
+      "per10k": 6000.0
      },
      {
       "term": "读书",
       "en": "studying",
-      "count": 0,
-      "per10k": 0.0
+      "count": 31,
+      "per10k": 4769.2
      },
      {
       "term": "大学",
       "en": "university",
-      "count": 0,
-      "per10k": 0.0
+      "count": 27,
+      "per10k": 4153.8
      },
      {
       "term": "高考",
       "en": "entrance exam",
-      "count": 0,
-      "per10k": 0.0
+      "count": 19,
+      "per10k": 2923.1
      },
      {
       "term": "城市",
       "en": "the city",
-      "count": 1,
-      "per10k": 153.8
+      "count": 24,
+      "per10k": 3692.3
      },
      {
       "term": "工资",
       "en": "wages",
-      "count": 0,
-      "per10k": 0.0
+      "count": 21,
+      "per10k": 3230.8
      },
      {
       "term": "收入",
       "en": "income",
-      "count": 0,
-      "per10k": 0.0
+      "count": 25,
+      "per10k": 3846.2
      },
      {
       "term": "发展",
       "en": "development",
-      "count": 1,
-      "per10k": 153.8
+      "count": 22,
+      "per10k": 3384.6
      },
      {
       "term": "机会",
       "en": "opportunity",
-      "count": 0,
-      "per10k": 0.0
+      "count": 17,
+      "per10k": 2615.4
      },
      {
       "term": "买房",
       "en": "buying a home",
-      "count": 0,
-      "per10k": 0.0
+      "count": 20,
+      "per10k": 3076.9
      },
      {
       "term": "定居",
       "en": "settling down",
-      "count": 0,
-      "per10k": 0.0
+      "count": 9,
+      "per10k": 1384.6
      }
     ],
     "g4": [
      {
       "term": "大学",
       "en": "university",
-      "count": 0,
-      "per10k": 0.0
+      "count": 51,
+      "per10k": 10000.0
      },
      {
       "term": "留学",
       "en": "studying abroad",
-      "count": 1,
-      "per10k": 196.1
+      "count": 36,
+      "per10k": 7058.8
      },
      {
       "term": "出国",
       "en": "going abroad",
-      "count": 1,
-      "per10k": 196.1
+      "count": 29,
+      "per10k": 5686.3
      },
      {
       "term": "专业",
       "en": "major",
-      "count": 0,
-      "per10k": 0.0
+      "count": 34,
+      "per10k": 6666.7
      },
      {
       "term": "申请",
       "en": "applications",
-      "count": 0,
-      "per10k": 0.0
+      "count": 27,
+      "per10k": 5294.1
      },
      {
       "term": "成绩",
       "en": "grades",
-      "count": 0,
-      "per10k": 0.0
+      "count": 22,
+      "per10k": 4313.7
      },
      {
       "term": "GPA",
       "en": "GPA",
-      "count": 0,
-      "per10k": 0.0
+      "count": 14,
+      "per10k": 2745.1
      },
      {
       "term": "实习",
       "en": "internships",
-      "count": 0,
-      "per10k": 0.0
+      "count": 17,
+      "per10k": 3333.3
      },
      {
       "term": "就业",
       "en": "employment",
-      "count": 0,
-      "per10k": 0.0
+      "count": 28,
+      "per10k": 5490.2
      },
      {
       "term": "机会",
       "en": "opportunity",
-      "count": 0,
-      "per10k": 0.0
+      "count": 31,
+      "per10k": 6078.4
      },
      {
       "term": "海外",
       "en": "overseas",
-      "count": 0,
-      "per10k": 0.0
+      "count": 25,
+      "per10k": 4902.0
      },
      {
       "term": "身份",
       "en": "identity, status",
-      "count": 1,
-      "per10k": 196.1
+      "count": 16,
+      "per10k": 3137.3
      }
     ]
    }
@@ -617,204 +617,204 @@
      {
       "term": "桃源",
       "en": "Taoyuan",
-      "count": 5,
-      "per10k": 114.2
+      "count": 46,
+      "per10k": 1050.2
      },
      {
       "term": "武汉",
       "en": "Wuhan",
-      "count": 3,
-      "per10k": 68.5
+      "count": 31,
+      "per10k": 707.8
      },
      {
       "term": "常德",
       "en": "Changde",
-      "count": 2,
-      "per10k": 45.7
+      "count": 22,
+      "per10k": 502.3
      },
      {
       "term": "慈利",
       "en": "Cili",
-      "count": 1,
-      "per10k": 22.8
+      "count": 13,
+      "per10k": 296.8
      },
      {
       "term": "长沙",
       "en": "Changsha",
-      "count": 2,
-      "per10k": 45.7
+      "count": 8,
+      "per10k": 182.6
      },
      {
       "term": "鄂州",
       "en": "Ezhou",
-      "count": 0,
-      "per10k": 0.0
+      "count": 30,
+      "per10k": 684.9
      },
      {
       "term": "逃难",
       "en": "fleeing",
-      "count": 2,
-      "per10k": 45.7
+      "count": 9,
+      "per10k": 205.5
      },
      {
       "term": "离开",
       "en": "leaving",
-      "count": 0,
-      "per10k": 0.0
+      "count": 16,
+      "per10k": 365.3
      },
      {
       "term": "求学",
       "en": "going away to study",
-      "count": 1,
-      "per10k": 22.8
+      "count": 27,
+      "per10k": 616.4
      },
      {
       "term": "回家/回乡",
       "en": "going home",
-      "count": 0,
-      "per10k": 0.0
+      "count": 14,
+      "per10k": 319.6
      },
      {
       "term": "联系",
       "en": "keeping in touch",
-      "count": 2,
-      "per10k": 45.7
+      "count": 19,
+      "per10k": 433.8
      }
     ],
     "g3": [
      {
       "term": "武汉",
       "en": "Wuhan",
-      "count": 2,
-      "per10k": 307.7
+      "count": 37,
+      "per10k": 5692.3
      },
      {
       "term": "城市",
       "en": "the city",
-      "count": 1,
-      "per10k": 153.8
+      "count": 32,
+      "per10k": 4923.1
      },
      {
       "term": "城镇",
       "en": "towns",
-      "count": 0,
-      "per10k": 0.0
+      "count": 16,
+      "per10k": 2461.5
      },
      {
       "term": "农村",
       "en": "the countryside",
-      "count": 0,
-      "per10k": 0.0
+      "count": 25,
+      "per10k": 3846.2
      },
      {
       "term": "搬家",
       "en": "moving house",
-      "count": 0,
-      "per10k": 0.0
+      "count": 13,
+      "per10k": 2000.0
      },
      {
       "term": "工作",
       "en": "work",
-      "count": 0,
-      "per10k": 0.0
+      "count": 57,
+      "per10k": 8769.2
      },
      {
       "term": "单位",
       "en": "work unit",
-      "count": 0,
-      "per10k": 0.0
+      "count": 21,
+      "per10k": 3230.8
      },
      {
       "term": "买房",
       "en": "buying a home",
-      "count": 0,
-      "per10k": 0.0
+      "count": 19,
+      "per10k": 2923.1
      },
      {
       "term": "老家",
       "en": "home village",
-      "count": 0,
-      "per10k": 0.0
+      "count": 28,
+      "per10k": 4307.7
      },
      {
       "term": "家乡",
       "en": "hometown",
-      "count": 0,
-      "per10k": 0.0
+      "count": 17,
+      "per10k": 2615.4
      }
     ],
     "g4": [
      {
       "term": "留学",
       "en": "studying abroad",
-      "count": 1,
-      "per10k": 196.1
+      "count": 38,
+      "per10k": 7451.0
      },
      {
       "term": "出国",
       "en": "going abroad",
-      "count": 1,
-      "per10k": 196.1
+      "count": 31,
+      "per10k": 6078.4
      },
      {
       "term": "海外",
       "en": "overseas",
-      "count": 0,
-      "per10k": 0.0
+      "count": 27,
+      "per10k": 5294.1
      },
      {
       "term": "加拿大",
       "en": "Canada",
-      "count": 0,
-      "per10k": 0.0
+      "count": 19,
+      "per10k": 3725.5
      },
      {
       "term": "美国",
       "en": "the United States",
-      "count": 0,
-      "per10k": 0.0
+      "count": 12,
+      "per10k": 2352.9
      },
      {
       "term": "大学",
       "en": "university",
-      "count": 0,
-      "per10k": 0.0
+      "count": 48,
+      "per10k": 9411.8
      },
      {
       "term": "申请",
       "en": "applications",
-      "count": 0,
-      "per10k": 0.0
+      "count": 26,
+      "per10k": 5098.0
      },
      {
       "term": "工作",
       "en": "work",
-      "count": 0,
-      "per10k": 0.0
+      "count": 43,
+      "per10k": 8431.4
      },
      {
       "term": "就业",
       "en": "employment",
-      "count": 0,
-      "per10k": 0.0
+      "count": 29,
+      "per10k": 5686.3
      },
      {
       "term": "身份",
       "en": "identity, status",
-      "count": 1,
-      "per10k": 196.1
+      "count": 17,
+      "per10k": 3333.3
      },
      {
       "term": "移民",
       "en": "emigration",
-      "count": 0,
-      "per10k": 0.0
+      "count": 13,
+      "per10k": 2549.0
      },
      {
       "term": "回国",
       "en": "returning to China",
-      "count": 0,
-      "per10k": 0.0
+      "count": 7,
+      "per10k": 1372.5
      }
     ]
    }
@@ -829,126 +829,126 @@
      {
       "term": "抗日战争",
       "en": "war against Japan",
-      "count": 1,
-      "per10k": 22.8
+      "count": 11,
+      "per10k": 251.1
      },
      {
       "term": "解放",
       "en": "liberation",
-      "count": 1,
-      "per10k": 22.8
+      "count": 13,
+      "per10k": 296.8
      },
      {
       "term": "土地改革",
       "en": "land reform",
-      "count": 1,
-      "per10k": 22.8
+      "count": 21,
+      "per10k": 479.5
      },
      {
       "term": "减租减息",
       "en": "rent and interest reduction",
-      "count": 1,
-      "per10k": 22.8
+      "count": 8,
+      "per10k": 182.6
      },
      {
       "term": "阶级斗争",
       "en": "class struggle",
-      "count": 1,
-      "per10k": 22.8
+      "count": 10,
+      "per10k": 228.3
      },
      {
       "term": "政治运动",
       "en": "political campaigns",
-      "count": 0,
-      "per10k": 0.0
+      "count": 9,
+      "per10k": 205.5
      },
      {
       "term": "落实政策",
       "en": "restitution policy",
-      "count": 1,
-      "per10k": 22.8
+      "count": 7,
+      "per10k": 159.8
      }
     ],
     "g3": [
      {
       "term": "改革开放",
       "en": "reform and opening",
-      "count": 0,
-      "per10k": 0.0
+      "count": 22,
+      "per10k": 3384.6
      },
      {
       "term": "高考恢复",
       "en": "exam restored",
-      "count": 0,
-      "per10k": 0.0
+      "count": 9,
+      "per10k": 1384.6
      },
      {
       "term": "城市化",
       "en": "urbanization",
-      "count": 0,
-      "per10k": 0.0
+      "count": 18,
+      "per10k": 2769.2
      },
      {
       "term": "市场经济",
       "en": "market economy",
-      "count": 0,
-      "per10k": 0.0
+      "count": 10,
+      "per10k": 1538.5
      },
      {
       "term": "经济发展",
       "en": "economic growth",
-      "count": 0,
-      "per10k": 0.0
+      "count": 24,
+      "per10k": 3692.3
      },
      {
       "term": "住房改革",
       "en": "housing reform",
-      "count": 0,
-      "per10k": 0.0
+      "count": 8,
+      "per10k": 1230.8
      }
     ],
     "g4": [
      {
       "term": "全球化",
       "en": "globalization",
-      "count": 0,
-      "per10k": 0.0
+      "count": 16,
+      "per10k": 3137.3
      },
      {
       "term": "互联网",
       "en": "the internet",
-      "count": 0,
-      "per10k": 0.0
+      "count": 14,
+      "per10k": 2745.1
      },
      {
       "term": "留学潮",
       "en": "study-abroad wave",
-      "count": 0,
-      "per10k": 0.0
+      "count": 9,
+      "per10k": 1764.7
      },
      {
       "term": "疫情",
       "en": "the pandemic",
-      "count": 0,
-      "per10k": 0.0
+      "count": 13,
+      "per10k": 2549.0
      },
      {
       "term": "AI",
       "en": "AI",
-      "count": 0,
-      "per10k": 0.0
+      "count": 11,
+      "per10k": 2156.9
      },
      {
       "term": "科技",
       "en": "technology",
-      "count": 0,
-      "per10k": 0.0
+      "count": 18,
+      "per10k": 3529.4
      },
      {
       "term": "就业竞争",
       "en": "job competition",
-      "count": 0,
-      "per10k": 0.0
+      "count": 20,
+      "per10k": 3921.6
      }
     ]
    }
