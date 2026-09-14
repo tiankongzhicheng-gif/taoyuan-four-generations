@@ -493,18 +493,6 @@
       tabs.appendChild(b);
     });
     render(gens[0]);
-
-    const top = document.getElementById("mined-top");
-    top.innerHTML = gens.map((g) => {
-      const info = M.generations[g];
-      const words = info.top_words.slice(0, 10).map(([w, n]) => `<li><span lang="zh-Hans">${esc(w)}</span> <b>${n}</b></li>`).join("");
-      return `<div><h4>${esc(info.label)}</h4><ol class="top-words">${words}</ol></div>`;
-    }).join("");
-
-    const table = document.getElementById("mined-table");
-    table.innerHTML = `<thead><tr><th scope="col">Generation 代际</th><th scope="col">Dimension 分析维度</th><th scope="col">Keyword 关键词</th><th scope="col">Meaning</th><th scope="col">Count 挖掘次数</th></tr></thead><tbody>` +
-      gens.flatMap((g) => M.dimensions.flatMap((d) => d.codes[g].map((r, i) =>
-        `<tr${i === 0 ? ' class="group-start"' : ""}><td>${i === 0 ? esc(M.generations[g].label) + " " + (zhGen[g] || "") : ""}</td><td>${i === 0 ? esc(d.label) + " " + esc(d.zh) : ""}</td><td lang="zh-Hans">${esc(r.term)}</td><td>${esc(r.en)}</td><td>${r.count}</td></tr>`))).join("") + "</tbody>";
   }
 
   const start = () => {
