@@ -448,7 +448,7 @@
     const meta = document.getElementById("mined-meta");
     const zhGen = { g2: "第二代", g3: "第三代", g4: "第四代" };
 
-    meta.textContent = `Corpus: ${M.corpus_label}. ` + gens.map((g) => `${M.generations[g].label} ${M.generations[g].characters.toLocaleString("en")} characters`).join(", ") + `. Method: ${M.method}.`;
+    meta.textContent = `Corpus: ${M.corpus_label}. ` + gens.map((g) => { const G = M.generations[g]; return G.words ? `${G.label} about ${G.words.toLocaleString("en")} words` : `${G.label} ${G.characters.toLocaleString("en")} characters`; }).join(", ") + `. Method: ${M.method}.`;
 
     function render(gid) {
       const info = M.generations[gid];
