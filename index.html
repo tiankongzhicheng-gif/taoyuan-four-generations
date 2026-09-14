@@ -282,6 +282,44 @@
     <div class="tabs" id="mined-tabs" role="tablist" aria-label="Generation"></div>
     <div class="mined-grid" id="mined" role="tabpanel"></div>
     <p class="footnote" id="mined-meta"></p>
+
+    <div class="nlp">
+      <h3 class="nlp__title">How the counting works</h3>
+      <ol class="pipeline">
+        <li><b>Group</b><span>Texts are sorted by generation, 2 to 4.</span></li>
+        <li><b>Clean</b><span>Punctuation and blank lines are dropped; names of people and places are withheld.</span></li>
+        <li><b>Segment</b><span>jieba splits Chinese text into words, with every codebook term added to its dictionary so terms stay whole.</span></li>
+        <li><b>Match</b><span>Each word is checked against the four-dimension codebook.</span></li>
+        <li><b>Count</b><span>Matches are tallied by generation and dimension.</span></li>
+        <li><b>Compare</b><span>Counts are set side by side across generations, as in the chart above.</span></li>
+      </ol>
+
+      <h3 class="nlp__title">Try the method</h3>
+      <p class="section-sub nlp__sub">Type or paste any Chinese text. Codebook keywords are marked as you type, by dimension. This runs in your browser with dictionary matching, the same codebook step the analysis uses.</p>
+      <div class="demo">
+        <div class="demo__input">
+          <label for="demo-text">Text to analyse</label>
+          <textarea id="demo-text" rows="6" spellcheck="false"></textarea>
+          <div class="demo__examples" role="group" aria-label="Examples">
+            <span>Sample sentences, written for this demo:</span>
+            <button type="button" class="chip" data-example="g2">Sample 1</button>
+            <button type="button" class="chip" data-example="g3">Sample 2</button>
+            <button type="button" class="chip" data-example="g4">Sample 3</button>
+            <button type="button" class="chip" data-example="clear">Clear</button>
+          </div>
+        </div>
+        <div class="demo__output">
+          <p class="demo__label">Marked keywords</p>
+          <div class="demo__marked" id="demo-marked" aria-live="polite"></div>
+          <ul class="demo__counts" id="demo-counts"></ul>
+        </div>
+      </div>
+
+      <div class="code-links">
+        <a class="button button--quiet" href="https://github.com/tiankongzhicheng-gif/taoyuan-four-generations/blob/main/analysis/mine.py">View the analysis code</a>
+        <a class="button button--quiet" href="https://github.com/tiankongzhicheng-gif/taoyuan-four-generations/blob/main/analysis/codebook.json">View the codebook</a>
+      </div>
+    </div>
   </section>
 
   <section class="method" id="method" aria-labelledby="method-title">

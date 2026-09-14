@@ -495,8 +495,70 @@
     render(gens[0]);
   }
 
+  /* ================= Keyword marking demo ================= */
+
+  const EXAMPLES = {
+    g2: "1951年土地改革，财产被没收，家里处于破产状态，生活困难。爷爷在家乡坚持学习，小学毕业后离开桃源到常德读书，1955年考入武汉的大学读建筑工程专业，毕业后到钢铁厂工作。",
+    g3: "我的父母1973年出生，赶上了改革开放和经济发展，接受了完整的教育，后来在武汉工作、买房、定居，最看重的是稳定和收入。",
+    g4: "我们这一代面对内卷和就业竞争，压力很大。很多人选择出国留学，申请海外的大学和专业，也在思考未来和身份。"
+  };
+
+  function buildDemo() {
+    const input = document.getElementById("demo-text");
+    const marked = document.getElementById("demo-marked");
+    const countsEl = document.getElementById("demo-counts");
+    if (!input || !M) return;
+
+    const dims = M.dimensions.map((d, i) => ({ id: d.id, label: d.label, zh: d.zh, idx: i }));
+    const termDims = new Map();
+    M.dimensions.forEach((d) => Object.values(d.codes).forEach((rows) => rows.forEach((r) => {
+      r.term.split("/").forEach((t) => {
+        if (!termDims.has(t)) termDims.set(t, new Set());
+        termDims.get(t).add(d.id);
+      });
+    })));
+    const terms = [...termDims.keys()].sort((a, b) => b.length - a.length);
+    const maxLen = terms[0] ? terms[0].length : 1;
+    const termSet = new Set(terms);
+
+    function run() {
+      const text = input.value;
+      const tally = Object.fromEntries(dims.map((d) => [d.id, 0]));
+      let html = "";
+      let i = 0;
+      while (i < text.length) {
+        let hit = "";
+        for (let len = Math.min(maxLen, text.length - i); len >= 1; len--) {
+          const piece = text.substr(i, len);
+          if (termSet.has(piece)) { hit = piece; break; }
+        }
+        if (hit) {
+          const ds = [...termDims.get(hit)];
+          ds.forEach((id) => { tally[id] += 1; });
+          const names = ds.map((id) => dims.find((d) => d.id === id).label).join(", ");
+          html += `<mark class="dim-${ds[0]}" title="${esc(names)}">${esc(hit)}</mark>`;
+          i += hit.length;
+        } else {
+          html += esc(text[i]);
+          i += 1;
+        }
+      }
+      marked.innerHTML = text.trim() ? html.replace(/\n/g, "<br>") : `<span class="demo__empty">Marked text appears here.</span>`;
+      countsEl.innerHTML = dims.map((d) => `<li class="dim-${d.id}"><i aria-hidden="true"></i>${esc(d.label)} <span lang="zh-Hans">${esc(d.zh)}</span><b>${tally[d.id]}</b></li>`).join("");
+    }
+
+    input.addEventListener("input", run);
+    document.querySelectorAll("[data-example]").forEach((b) => b.addEventListener("click", () => {
+      input.value = b.dataset.example === "clear" ? "" : EXAMPLES[b.dataset.example];
+      run();
+      input.focus({ preventScroll: true });
+    }));
+    input.value = EXAMPLES.g2;
+    run();
+  }
+
   const start = () => {
-    [buildMigration, buildNetwork, buildMacro, buildMined].forEach((fn) => {
+    [buildMigration, buildNetwork, buildMacro, buildMined, buildDemo].forEach((fn) => {
       try { fn(); } catch (err) { console.error(fn.name, err); }
     });
   };
