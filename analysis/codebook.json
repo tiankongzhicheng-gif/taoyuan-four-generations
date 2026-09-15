@@ -30,5 +30,38 @@
     "g3": [["改革开放", "reform and opening"], ["高考恢复", "exam restored"], ["城市化", "urbanization"], ["市场经济", "market economy"], ["经济发展", "economic growth"], ["住房改革", "housing reform"]],
     "g4": [["全球化", "globalization"], ["互联网", "the internet"], ["留学潮", "study-abroad wave"], ["疫情", "the pandemic"], ["AI", "AI"], ["科技", "technology"], ["就业竞争", "job competition"]]
    }}
+ ],
+ "themes_note": "Themes group codebook terms across dimensions so the same topic can be followed from one generation to the next. A term listed in several dimensions of one generation is counted once, using its largest count.",
+ "themes": [
+  {"id": "class", "label": "Class and politics", "zh": "成分 / 政治",
+   "terms": ["成分", "地主", "没收", "政治", "劳教", "破产", "土地改革", "减租减息", "阶级斗争", "政治运动", "落实政策", "解放"],
+   "note": "The centre of generation 2’s story: the class label, land reform, confiscation. In the family account the label decided who could go to school, and it was lifted only in 1981, when generation 3 was eight. None of these words are among the keywords of the two later generations."},
+  {"id": "war", "label": "War and flight", "zh": "战争 / 逃难",
+   "terms": ["战争", "抗日战争", "逃难"],
+   "note": "Only generation 2 lived through war. The flight to Cili County in 1945 is the first move the family records."},
+  {"id": "hometown", "label": "Hometown and kin", "zh": "老家 / 联系",
+   "terms": ["桃源", "慈利", "常德", "离开", "回家/回乡", "联系", "断绝联系", "老家", "家乡", "农村"],
+   "note": "Generation 2 names the places it left and asks whether it kept in touch, after eighteen years without contact. Generation 3 speaks of 老家, the old home. For generation 4 the hometown words drop out of the list."},
+  {"id": "education", "label": "Schooling", "zh": "读书 / 教育",
+   "terms": ["读书", "学习", "大学", "考试", "学校", "知识", "专业", "失学", "求学", "教育", "高考", "高考恢复", "孩子教育", "申请", "成绩", "GPA"],
+   "note": "The one theme near the top for every generation. Its words change: 读书 (studying) leads for generation 2, 教育 and 高考 (education, the entrance exam) for generation 3, and 大学, 专业 and 申请 (university, major, applications) for generation 4. Schooling moves from a way out of the village, to a national exam, to an application abroad."},
+  {"id": "work", "label": "Work and income", "zh": "工作 / 收入",
+   "terms": ["工作", "工资", "收入", "就业", "实习", "单位", "失业", "技术", "工程", "建筑", "工厂"],
+   "note": "Steady in the middle for all three generations, with different words each time: 工程, 建筑, 工厂 (engineering, construction, factory) for the steel-plant generation; 工资, 收入, 单位 (wages, income, work unit) for their children; 就业 and 实习 (employment, internships) for the grandchildren."},
+  {"id": "city", "label": "The city and growth", "zh": "城市 / 发展",
+   "terms": ["武汉", "长沙", "鄂州", "城市", "城镇", "城市化", "改革开放", "市场经济", "经济发展", "发展", "机会"],
+   "note": "Rises to first place for generation 3, born in the steel town of Ezhou in 1973 and living in Wuhan from 1991: the words of reform, growth and the city. For generation 4, born in Wuhan, the city is where life starts, not where it is heading."},
+  {"id": "housing", "label": "Housing", "zh": "房子 / 买房",
+   "terms": ["住房", "房子", "房价", "买房", "房贷", "定居", "住房改革", "搬家"],
+   "note": "Not among generation 2’s keywords. It appears with generation 3, who reached working age as the 1998 housing reform turned homes into something to buy, and shrinks for generation 4, where it becomes a mortgage."},
+  {"id": "security", "label": "Hardship and security", "zh": "困难 / 稳定",
+   "terms": ["困难", "稳定", "养老"],
+   "note": "Generation 2 speaks of 困难, hardship. Generation 3 speaks of 稳定 and 养老, stability and old-age care. The worry changes from getting through to holding on."},
+  {"id": "pressure", "label": "Competition and pressure", "zh": "竞争 / 内卷",
+   "terms": ["竞争", "内卷", "压力", "焦虑", "未来", "不确定", "就业竞争"],
+   "note": "A small theme for generation 3 and near the top for generation 4. 内卷 (involution), a word that became common only around 2020, is part of how generation 4 describes itself."},
+  {"id": "abroad", "label": "Abroad and the wider world", "zh": "出国 / 全球化",
+   "terms": ["留学", "出国", "海外", "加拿大", "美国", "移民", "回国", "留学潮", "身份", "全球化", "互联网", "疫情", "AI", "科技"],
+   "note": "Absent for the two older generations and first for generation 4. Migration no longer means leaving the village for the city. It means leaving the country, and asking what that does to 身份, identity."}
  ]
 }

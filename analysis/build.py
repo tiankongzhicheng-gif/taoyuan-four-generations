@@ -57,6 +57,10 @@ def main():
 
     mined_path = DATA / "mined.json"
     mined = json.loads(mined_path.read_text(encoding="utf-8")) if mined_path.exists() else None
+    if mined:
+        codebook = json.loads((ROOT / "analysis" / "codebook.json").read_text(encoding="utf-8"))
+        mined["themes"] = codebook.get("themes", [])
+        mined["themes_note"] = codebook.get("themes_note", "")
     stale = DATA / "keyness.json"
     if stale.exists():
         stale.unlink()

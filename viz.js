@@ -344,7 +344,7 @@
     const series = [
       { key: "urban", label: "China: urban population", data: F.macro.urban_share, cls: "s-urban" },
       { key: "farm", label: "China: jobs in farming", data: F.macro.primary_employment_share, cls: "s-farm" },
-      { key: "family", label: "Li siblings: share of the six living in a town or city", data: fam.map(([y, v]) => [y, v]), cls: "s-family", step: true }
+      { key: "family", label: "Li siblings: how many of the six lived in a town or city", data: fam.map(([y, v]) => [y, v]), cls: "s-family", step: true }
     ];
 
     const width = Math.max(host.clientWidth, 320);
@@ -388,7 +388,6 @@
     series.forEach((s) => legend.appendChild(el("li", "legend__item legend__line " + s.cls, `<i aria-hidden="true"></i>${esc(s.label)}`)));
     host.prepend(legend);
 
-    // hover and keyboard crosshair
     const interp = (data, yr) => {
       if (yr < data[0][0] || yr > data[data.length - 1][0]) return null;
       for (let i = 0; i < data.length - 1; i++) {
@@ -398,6 +397,39 @@
       }
       return { v: data[data.length - 1][1], exact: true };
     };
+
+    // the years the sibling line steps up, and who moved
+    const steps = fam.filter(([yr, , n], i) => i > 0 && n !== fam[i - 1][2]).map(([yr, v, n]) => {
+      const movers = F.residences.filter((r) => COHORT.includes(r.person) && r.from === yr && places.get(r.place).type !== "village");
+      return { yr, v, n, movers, approx: movers.some((r) => r.approx) };
+    });
+    steps.forEach((s) => {
+      svg.append("circle").attr("class", "macro__step").attr("cx", x(s.yr)).attr("cy", y(s.v)).attr("r", 4.5);
+      svg.append("text").attr("class", "macro__step-label").attr("x", x(s.yr) + 7).attr("y", y(s.v) - 8).text(`${s.n} of 6`);
+    });
+
+    const read = document.getElementById("macro-read");
+    if (read) {
+      const pct = (v) => Math.round(v) + "%";
+      const who = (rs) => {
+        const names = rs.map((r) => shortName(r.person));
+        const list = names.length > 1 ? names.slice(0, -1).join(", ") + " and " + names[names.length - 1] : names[0];
+        return `${list} ${names.length > 1 ? "move" : "moves"} to ${places.get(rs[0].place).name.replace(/^Local town$/, "the local town")}`;
+      };
+      const lastStep = steps[steps.length - 1];
+      const nat = lastStep && interp(F.macro.urban_share, lastStep.yr);
+      read.innerHTML =
+        `<h3>How to read the purple line</h3>` +
+        `<div class="macro-read__cols"><div class="prose">` +
+        `<p>The six are my great-grandfather’s children who survived childhood: my grandfather and his five brothers and sisters. For each year, the line counts how many of the six lived in a town or city rather than in the home village, and shows that as a share of six. Two of six is 33%.</p>` +
+        `<p>It moves in steps because it only changes when one of them moves. Children not yet born, and the second daughter after she married to a place the account does not record, count as not in a town.</p>` +
+        (nat ? `<p>Set against the solid line for China’s urban population, the family was ahead of the country: by ${lastStep.yr}, ${["no one", "one", "two", "three", "four", "five", "all"][lastStep.n]} of the six lived in a town, ${pct(lastStep.v)}, when China as a whole was about ${pct(nat.v)} urban. The difference came from education and, later, from the return of property that let the family move into town.</p>` : "") +
+        `</div><ol class="macro-read__steps">` +
+        steps.map((s) => `<li><b>${s.yr}${s.approx ? " approx." : ""}</b><span class="macro-read__n">${s.n} of 6, ${pct(s.v)}</span><span>${esc(who(s.movers))}.</span></li>`).join("") +
+        `</ol></div>`;
+    }
+
+    // hover and keyboard crosshair
     const famAt = new Map(fam.map(([yr, v, n]) => [yr, [v, n]]));
     const cross = svg.append("line").attr("class", "macro__cross").attr("y1", m.top).attr("y2", height - m.bottom).style("opacity", 0);
     const tip = el("div", "tooltip");
@@ -495,91 +527,334 @@
     render(gens[0]);
   }
 
+  /* ================= Themes across generations ================= */
+
+  function themeTable() {
+    const gens = Object.keys(M.generations);
+    return (M.themes || []).map((t) => {
+      const cells = gens.map((gid) => {
+        const counts = new Map();
+        M.dimensions.forEach((d) => (d.codes[gid] || []).forEach((r) => counts.set(r.term, Math.max(counts.get(r.term) || 0, r.count))));
+        const terms = t.terms.filter((term) => counts.has(term)).map((term) => [term, counts.get(term)]).sort((a, b) => b[1] - a[1]);
+        if (!terms.length) return { gid, absent: true };
+        const G = M.generations[gid];
+        const size = G.words || G.tokens || G.characters || 1;
+        const count = terms.reduce((s, [, c]) => s + c, 0);
+        return { gid, count, rate: (count / size) * 10000, terms };
+      });
+      return { ...t, cells };
+    });
+  }
+
+  function buildShift() {
+    const host = document.getElementById("shift-chart");
+    const detail = document.getElementById("shift-detail");
+    const list = document.getElementById("shift-themes");
+    if (!host || !M || !M.themes || !M.themes.length || typeof d3 === "undefined") return;
+
+    const gens = Object.keys(M.generations);
+    const born = { g2: "born 1939", g3: "born 1973", g4: "born 2000s" };
+    const themes = themeTable();
+
+    // rank within each generation; absent themes go below the ranked ones
+    const slot = new Map();
+    const ranked = {};
+    gens.forEach((gid, gi) => {
+      const present = themes.filter((t) => !t.cells[gi].absent).sort((a, b) => b.cells[gi].rate - a.cells[gi].rate);
+      const absent = themes.filter((t) => t.cells[gi].absent);
+      ranked[gid] = present.length;
+      present.forEach((t, i) => { t.cells[gi].rank = i + 1; slot.set(t.id + gi, i); });
+      absent.forEach((t, i) => slot.set(t.id + gi, present.length + i));
+    });
+
+    const W = 760;
+    const rowH = 40;
+    const top = 70;
+    const H = top + themes.length * rowH + 8;
+    const colX = gens.map((_, i) => 215 + i * 165);
+    const yAt = (t, gi) => top + slot.get(t.id + gi) * rowH + rowH / 2;
+
+    const svg = d3.select(host).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("width", W).attr("height", H)
+      .attr("role", "img").attr("aria-label", "Ranking of ten themes in generations 2, 3 and 4. The theme buttons above and the table below give the same information.");
+
+    gens.forEach((gid, gi) => {
+      const g = svg.append("g").attr("class", "shift__col");
+      g.append("text").attr("class", "shift__col-title").attr("x", colX[gi]).attr("y", 24).text(M.generations[gid].label);
+      g.append("text").attr("class", "shift__col-sub").attr("x", colX[gi]).attr("y", 44).text(born[gid] || "");
+      g.append("line").attr("class", "shift__col-rule").attr("x1", colX[gi]).attr("x2", colX[gi]).attr("y1", top - 6).attr("y2", H - 4);
+    });
+
+    const curve = (x1, y1, x2, y2) => `M${x1},${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
+    const groups = svg.append("g").selectAll("g").data(themes).join("g").attr("class", "shift__theme").attr("data-id", (t) => t.id);
+
+    groups.each(function (t) {
+      const g = d3.select(this);
+      for (let gi = 0; gi < gens.length - 1; gi++) {
+        const faint = t.cells[gi].absent || t.cells[gi + 1].absent;
+        const d = curve(colX[gi], yAt(t, gi), colX[gi + 1], yAt(t, gi + 1));
+        g.append("path").attr("class", "shift__hit").attr("d", d);
+        g.append("path").attr("class", "shift__seg" + (faint ? " is-faint" : "")).attr("d", d);
+      }
+      t.cells.forEach((c, gi) => {
+        if (c.absent) {
+          g.append("circle").attr("class", "shift__gap").attr("cx", colX[gi]).attr("cy", yAt(t, gi)).attr("r", 5);
+        } else {
+          g.append("circle").attr("class", "shift__node").attr("cx", colX[gi]).attr("cy", yAt(t, gi)).attr("r", 14);
+          g.append("text").attr("class", "shift__rank").attr("x", colX[gi]).attr("y", yAt(t, gi) + 5).text(c.rank);
+        }
+      });
+      g.append("text").attr("class", "shift__label shift__label--l").attr("x", colX[0] - 24).attr("y", yAt(t, 0) + 5).text(t.label);
+      g.append("text").attr("class", "shift__label shift__label--r").attr("x", colX[gens.length - 1] + 24).attr("y", yAt(t, gens.length - 1) + 5).text(t.label);    });
+
+    const seq = (t) => t.cells.map((c) => (c.absent ? "–" : c.rank)).join(" · ");
+    const buttons = themes.map((t) => {
+      const b = el("button", "shift__btn", `<span>${esc(t.label)}</span><small aria-hidden="true">${seq(t)}</small>`);
+      b.type = "button";
+      b.setAttribute("aria-pressed", "false");
+      b.setAttribute("aria-label", `${t.label}: ` + t.cells.map((c, gi) => `${M.generations[gens[gi]].label} ${c.absent ? "not among keywords" : "rank " + c.rank}`).join(", "));
+      b.addEventListener("click", () => select(t.id));
+      list.appendChild(b);
+      return [t.id, b];
+    });
+
+    let current = null;
+    function highlight(id) {
+      groups.classed("is-on", (t) => t.id === id).classed("is-off", (t) => id && t.id !== id);
+      groups.filter((t) => t.id === id).raise();
+    }
+    function select(id) {
+      current = id;
+      highlight(id);
+      buttons.forEach(([bid, b]) => b.setAttribute("aria-pressed", String(bid === id)));
+      const t = themes.find((x) => x.id === id);
+      detail.innerHTML =
+        `<p class="shift__detail-name">${esc(t.label)} <span class="zh" lang="zh-Hans">${esc(t.zh)}</span></p>` +
+        `<ol class="shift__gens">` + t.cells.map((c, gi) => {
+          const gid = gens[gi];
+          const head = `<b>${esc(M.generations[gid].label)}</b> <span>${born[gid] || ""}</span>`;
+          if (c.absent) return `<li class="is-absent">${head}<p>Not among this generation’s keywords.</p></li>`;
+          return `<li>${head}<p><strong>#${c.rank} of ${ranked[gid]}</strong> · ${c.rate.toFixed(0)} per 10,000 words</p>` +
+            `<p class="shift__terms">${c.terms.slice(0, 5).map(([term, n]) => `<span lang="zh-Hans">${esc(term)}</span> ${n}`).join(" · ")}</p></li>`;
+        }).join("") + `</ol><p class="shift__note">${esc(t.note || "")}</p>`;
+    }
+
+    groups.on("pointerenter", (e, t) => highlight(t.id)).on("pointerleave", () => highlight(current)).on("click", (e, t) => select(t.id));
+
+    // start with the theme that fell furthest
+    const pos = (t, gi) => (t.cells[gi].absent ? themes.length + 1 : t.cells[gi].rank);
+    const fell = [...themes].sort((a, b) => (pos(b, gens.length - 1) - pos(b, 0)) - (pos(a, gens.length - 1) - pos(a, 0)))[0];
+    select(fell.id);
+
+    document.getElementById("shift-note").textContent =
+      `${M.themes_note || ""} Ranks use counts per 10,000 words, so a generation with longer interviews does not score higher just for talking more. A hollow dot means that generation’s codebook has none of the theme’s words, so the theme was not counted there.`;
+
+    const table = document.getElementById("shift-table");
+    table.innerHTML = `<thead><tr><th scope="col">Theme</th>${gens.map((gid) => `<th scope="col">${esc(M.generations[gid].label)}</th>`).join("")}</tr></thead><tbody>` +
+      themes.map((t) => `<tr><td>${esc(t.label)}</td>${t.cells.map((c) => `<td>${c.absent ? "not counted" : `#${c.rank}, ${c.rate.toFixed(0)} per 10,000 words`}</td>`).join("")}</tr>`).join("") + "</tbody>";
+  }
+
   /* ================= Keyword marking demo ================= */
 
   const EXAMPLES = {
-    g2: "Land reform came in 1951. The property was confiscated and the family fell into bankruptcy and hardship. My grandfather kept studying, left Taoyuan for school in Changde, and in 1955 went to university in Wuhan to study engineering and construction. After graduating he found work at a factory.",
-    g3: "My parents were born in 1973. They grew up with reform and opening and economic growth, got a full education, and later settled in Wuhan, where they cared most about stability, income, and buying a home.",
-    g4: "My generation faces involution, competition, and pressure in finding a job. Many of us choose to study abroad, apply to universities and majors overseas, and think hard about the future and our identity."
+    g2: "1951年土地改革，家里被划成地主成分，房子和田地都没收了。那年我离开桃源，去常德读书，1955年考上武汉的大学，学建筑工程，毕业后分到鄂州的工厂。",
+    g3: "我们1973年在鄂州出生，赶上改革开放，高考之后上了大学。1991年搬到武汉，进了单位，最在意的是工作稳定、收入和买房。",
+    g4: "我们这一代从小就在竞争和内卷里长大，压力很大。我2022年出国留学，先到蒙特利尔，后来去滑铁卢读大学，常常想未来的就业和身份。",
+    en: "Land reform came in 1951. The property was confiscated and the family fell into hardship. My grandfather left Taoyuan for school in Changde, went to university in Wuhan, and later moved to Ezhou to work at a factory."
   };
 
   // Extra English forms for codebook terms, keyed by the Chinese term.
   const EN_EXTRA = {
     "战争": ["wars", "wartime"], "逃难": ["flee", "fled", "fleeing", "refugee", "refugees"], "地主": ["landlords"],
-    "没收": ["confiscated", "confiscate"], "破产": ["bankrupt"], "困难": ["hardships", "difficulties"],
+    "没收": ["confiscated", "confiscate"], "破产": ["bankrupt"], "困难": ["hardships", "difficulties", "poor", "poverty"],
     "读书": ["study", "studied", "studies"], "学习": ["learn", "learned", "learnt"], "大学": ["college", "colleges", "universities"],
-    "学校": ["schools"], "考试": ["exam"], "工作": ["job", "jobs", "career", "worked", "working"], "工程": ["engineer", "engineers"],
+    "学校": ["schools"], "考试": ["exam"], "工作": ["job", "jobs", "career", "worked", "working", "business"], "工程": ["engineer", "engineers"],
     "教育": ["educated"], "城市": ["cities", "urban"], "留学": ["study abroad", "studied abroad"], "出国": ["abroad", "go abroad", "went abroad"],
     "海外": ["overseas"], "美国": ["US", "U.S.", "America", "American"], "加拿大": ["Canadian"],
     "移民": ["immigration", "immigrate", "emigrate", "emigrated"], "竞争": ["compete", "competitive"], "压力": ["stress", "stressed"],
     "焦虑": ["anxious"], "就业": ["employed"], "实习": ["intern", "interns"], "申请": ["apply", "applied", "application"],
     "成绩": ["grade", "score", "scores"], "专业": ["majors"], "房贷": ["mortgages"], "买房": ["buy a home", "bought a home", "buy a house", "bought a house"],
-    "房子": ["house", "houses", "apartment", "home"], "住房": ["housing"], "工资": ["salary", "salaries", "wage"], "稳定": ["stable", "security"],
-    "失业": ["unemployed", "jobless"], "养老": ["retirement", "pension"], "解放": ["liberated"], "改革开放": ["reform and opening up"],
-    "城市化": ["urbanisation"], "全球化": ["globalisation", "global"], "疫情": ["covid", "covid-19"], "科技": ["tech"], "互联网": ["online"],
-    "发展": ["develop", "growth"], "机会": ["opportunities", "chance", "chances"], "定居": ["settle", "settled"], "搬家": ["moved house", "move house"],
-    "农村": ["rural", "village"], "老家": ["hometown"], "离开": ["leave", "left"], "联系": ["contact", "in touch"]
+    "房子": ["house", "houses", "apartment", "home"], "住房": ["housing"], "工资": ["salary", "salaries", "wage"], "收入": ["money", "earn", "earned", "earning"],
+    "稳定": ["stable", "security"], "失业": ["unemployed", "jobless", "laid off"], "养老": ["retirement", "pension"], "解放": ["liberated"],
+    "改革开放": ["reform and opening up"], "城市化": ["urbanisation"], "全球化": ["globalisation", "global"], "疫情": ["covid", "covid-19"],
+    "科技": ["tech"], "互联网": ["online"], "发展": ["develop", "growth"], "机会": ["opportunities", "chance", "chances"],
+    "定居": ["settle", "settled"], "搬家": ["move", "moved", "moving", "moves", "relocated"],
+    "农村": ["rural", "village", "countryside"], "老家": ["hometown"], "离开": ["leave", "left"], "联系": ["contact", "in touch"]
   };
+
+  // Everyday Chinese variants of codebook terms. The published counts use the codebook terms only.
+  const ZH_VARIANTS = {
+    "搬家": ["搬到", "搬去", "搬来", "搬迁", "迁到", "迁往", "迁居", "移居"],
+    "离开": ["离家", "走出"],
+    "城市": ["城里", "进城", "大城市"],
+    "农村": ["乡下", "村里", "乡村"],
+    "家乡": ["故乡"],
+    "工作": ["上班", "打工", "做生意", "经商", "下海", "创业"],
+    "收入": ["赚钱", "挣钱", "赚到", "挣到", "第一桶金"],
+    "工资": ["薪水", "工钱"],
+    "失业": ["下岗"],
+    "单位": ["国企"],
+    "读书": ["上学", "念书"],
+    "学校": ["私塾", "中学", "小学"],
+    "困难": ["艰难", "贫困", "吃苦", "苦日子"],
+    "战争": ["打仗"],
+    "逃难": ["逃到", "逃往"],
+    "联系": ["来往", "通信", "写信"],
+    "断绝联系": ["断了联系", "断绝来往"],
+    "出国": ["国外"],
+    "机会": ["机遇"],
+    "稳定": ["铁饭碗", "安稳"],
+    "买房": ["买了房"],
+    "改革开放": ["改开"]
+  };
+
+  // Place names count toward Migration, as place names in the codebook do.
+  const ZH_PLACES = "北方 南方 东北 西北 沿海 外地 广东 广州 深圳 上海 北京 天津 重庆 南京 杭州 苏州 厦门 成都 西安 郑州 香港 台湾 湖南 湖北 河南 四川 浙江 江苏 福建 海南 黄石 岳阳 株洲 蒙特利尔 斯坦斯特德 滑铁卢 多伦多 温哥华 英国 澳大利亚 日本 新加坡".split(" ");
+  const EN_PLACES = "Guangdong|Guangzhou|Shenzhen|Shanghai|Beijing|Hunan|Hubei|Changsha|Taoyuan|Changde|Cili|Ezhou|Wuhan|Montreal|Stanstead|Waterloo|Toronto|Vancouver|Ontario|Quebec|Canada|Britain|England|Australia|Japan|Singapore|Hong Kong".split("|");
+
+  const ZH_STOP = new Set("之后 之前 以后 以前 后来 当时 那时 那年 我们 他们 你们 她们 自己 大家 这个 那个 一个 一些 这些 那些 这样 那样 这种 那种 已经 因为 所以 但是 可是 然后 就是 还是 也是 不是 可以 没有 什么 怎么 时候 现在 开始 觉得 知道 非常 很多 一直 为了 关于 以及 或者 而且 如果 虽然 只是 其实 比较 一样 的话 起来 出来 进行 这一 一代 都是 从小".split(" "));
+  const EN_STOP = new Set("the and for with that this from was were are have has had they them their our his her its into about after before then than when what which who will would could should there here also just very many much some more most such only other over under again been being did does doing each few how why all any both not nor own same too can out off down one two year years later fell came went got made make like".split(" "));
 
   function buildDemo() {
     const input = document.getElementById("demo-text");
     const marked = document.getElementById("demo-marked");
+    const unknownEl = document.getElementById("demo-unknown");
     const countsEl = document.getElementById("demo-counts");
     if (!input || !M) return;
 
     const dims = M.dimensions.map((d) => ({ id: d.id, label: d.label, zh: d.zh }));
-    const zhDims = new Map();
-    const enDims = new Map();
-    const addTo = (map, key, dimId) => {
-      if (!key) return;
-      if (!map.has(key)) map.set(key, new Set());
-      map.get(key).add(dimId);
-    };
-    const englishForms = (gloss) => gloss.split(/,\s*|\s+or\s+/).map((x) => x.trim().replace(/^(the|a|an)\s+/i, "").toLowerCase()).filter(Boolean);
+    const dimLabel = (id) => dims.find((d) => d.id === id).label;
+    const isZh = (t) => /[^\x00-\x7f]/.test(t);
 
+    // lexicon: surface form -> { dims, term, kind }
+    const lex = new Map();
+    const add = (form, dimIds, term, kind) => {
+      const key = isZh(form) ? form : form.toLowerCase();
+      if (!key) return;
+      if (!lex.has(key)) lex.set(key, { dims: new Set(), term, kind });
+      dimIds.forEach((id) => lex.get(key).dims.add(id));
+    };
+    const codeDims = new Map();
+    M.dimensions.forEach((d) => Object.values(d.codes).forEach((rows) => rows.forEach((r) => r.term.split("/").forEach((t) => {
+      if (!codeDims.has(t)) codeDims.set(t, new Set());
+      codeDims.get(t).add(d.id);
+    }))));
+    const englishForms = (gloss) => gloss.split(/,\s*|\s+or\s+/).map((x) => x.trim().replace(/^(the|a|an)\s+/i, "")).filter(Boolean);
     M.dimensions.forEach((d) => Object.values(d.codes).forEach((rows) => rows.forEach((r) => {
       r.term.split("/").forEach((t) => {
-        addTo(zhDims, t, d.id);
-        (EN_EXTRA[t] || []).forEach((e) => addTo(enDims, e.toLowerCase(), d.id));
+        add(t, codeDims.get(t), t, "code");
+        (EN_EXTRA[t] || []).forEach((e) => add(e, codeDims.get(t), t, "variant"));
       });
-      englishForms(r.en).forEach((e) => addTo(enDims, e, d.id));
+      englishForms(r.en).forEach((e) => add(e, codeDims.get(r.term.split("/")[0]), r.term, "variant"));
     })));
+    Object.entries(ZH_VARIANTS).forEach(([term, forms]) => {
+      if (codeDims.has(term)) forms.forEach((f) => { if (!lex.has(f)) add(f, codeDims.get(term), term, "variant"); });
+    });
+    [...ZH_PLACES, ...EN_PLACES].forEach((p) => { if (!lex.has(isZh(p) ? p : p.toLowerCase())) add(p, ["migration"], null, "place"); });
+    const custom = new Map();
 
     const escRe = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const byLen = (a, b) => b.length - a.length;
-    const enPattern = [...enDims.keys()].sort(byLen).map(escRe).join("|");
-    const zhPattern = [...zhDims.keys()].filter((t) => /[^\x00-\x7f]/.test(t)).sort(byLen).map(escRe).join("|");
-    const matcher = new RegExp(`(\\b(?:${enPattern})(?:es|s)?\\b)|(${zhPattern})`, "gi");
-
-    const dimsFor = (hit) => {
-      if (zhDims.has(hit)) return zhDims.get(hit);
-      const low = hit.toLowerCase();
-      return enDims.get(low) || enDims.get(low.replace(/es$/, "")) || enDims.get(low.replace(/s$/, ""));
+    let matcher;
+    const compile = () => {
+      const keys = [...lex.keys(), ...custom.keys()];
+      const en = keys.filter((k) => !isZh(k)).sort(byLen).map(escRe).join("|");
+      const zh = keys.filter(isZh).sort(byLen).map(escRe).join("|");
+      matcher = new RegExp(`(\\b(?:${en})(?:es|s)?\\b)|(${zh})`, "gi");
     };
+    compile();
+
+    const entryFor = (hit) => {
+      if (isZh(hit)) return custom.get(hit) || lex.get(hit);
+      const low = hit.toLowerCase();
+      for (const k of [low, low.replace(/es$/, ""), low.replace(/s$/, "")]) {
+        if (custom.has(k)) return custom.get(k);
+        if (lex.has(k)) return lex.get(k);
+      }
+      return null;
+    };
+
+    const segmenter = typeof Intl !== "undefined" && Intl.Segmenter ? new Intl.Segmenter("zh", { granularity: "word" }) : null;
+    const segment = (text) => (segmenter ? [...segmenter.segment(text)] : [{ segment: text, isWordLike: false }]);
+
+    let pending = null;
 
     function run() {
       const text = input.value;
       const tally = Object.fromEntries(dims.map((d) => [d.id, 0]));
+      const found = Object.fromEntries(dims.map((d) => [d.id, []]));
+      const unknown = [];
       let html = "";
       let last = 0;
+
+      const gap = (s) => segment(s).map((seg) => {
+        const w = seg.segment;
+        if (!seg.isWordLike) return esc(w);
+        const word = /^[\d.]+$/.test(w) ? false : isZh(w) ? w.length >= 2 && !ZH_STOP.has(w) : w.length >= 3 && !EN_STOP.has(w.toLowerCase());
+        if (word && !unknown.includes(w)) unknown.push(w);
+        return `<span class="tok">${esc(w)}</span>`;
+      }).join("");
+
       for (const m of text.matchAll(matcher)) {
         const hit = m[0];
-        const set = dimsFor(hit);
-        if (!set) continue;
-        const ds = [...set];
-        ds.forEach((id) => { tally[id] += 1; });
-        const names = ds.map((id) => dims.find((d) => d.id === id).label).join(", ");
-        html += esc(text.slice(last, m.index)) + `<mark class="dim-${ds[0]}" title="${esc(names)}">${esc(hit)}</mark>`;
+        const entry = entryFor(hit);
+        if (!entry) continue;
+        const ds = [...entry.dims];
+        const via = entry.kind === "variant" && entry.term && entry.term !== hit ? `${hit} → ${entry.term}` : hit;
+        ds.forEach((id) => { tally[id] += 1; found[id].push(entry.kind === "place" ? `${hit} (place)` : via); });
+        const how = { code: "codebook term", variant: `variant of ${entry.term}`, place: "place name", custom: "added by you" }[entry.kind];
+        html += gap(text.slice(last, m.index)) +
+          `<mark class="dim-${ds[0]}${entry.kind === "custom" ? " is-custom" : ""}" title="${esc(how + ": " + ds.map(dimLabel).join(", "))}">${esc(hit)}</mark>`;
         last = m.index + hit.length;
       }
-      html += esc(text.slice(last));
+      html += gap(text.slice(last));
+
       marked.innerHTML = text.trim() ? html.replace(/\n/g, "<br>") : `<span class="demo__empty">Marked text appears here.</span>`;
-      countsEl.innerHTML = dims.map((d) => `<li class="dim-${d.id}"><i aria-hidden="true"></i>${esc(d.label)} <span lang="zh-Hans">${esc(d.zh)}</span><b>${tally[d.id]}</b></li>`).join("");
+
+      unknownEl.innerHTML = "";
+      if (segmenter && unknown.length) {
+        const head = el("p", "demo__unknown-head", "Not in the codebook. Select a word to add it:");
+        const row = el("div", "demo__unknown-list");
+        unknown.slice(0, 16).forEach((w) => {
+          const b = el("button", "chip chip--quiet", esc(w));
+          b.type = "button";
+          b.setAttribute("aria-pressed", String(pending === w));
+          b.addEventListener("click", () => { pending = pending === w ? null : w; run(); });
+          row.appendChild(b);
+        });
+        unknownEl.append(head, row);
+        if (pending && unknown.includes(pending)) {
+          const pick = el("div", "demo__pick", `<span>Add <b>${esc(pending)}</b> to</span>`);
+          pick.setAttribute("role", "group");
+          pick.setAttribute("aria-label", `Choose a dimension for ${pending}`);
+          dims.forEach((d) => {
+            const b = el("button", `chip dim-${d.id}`, `<i aria-hidden="true"></i>${esc(d.label)}`);
+            b.type = "button";
+            b.addEventListener("click", () => {
+              custom.set(isZh(pending) ? pending : pending.toLowerCase(), { dims: new Set([d.id]), term: pending, kind: "custom" });
+              pending = null;
+              compile();
+              run();
+            });
+            pick.appendChild(b);
+          });
+          unknownEl.appendChild(pick);
+        }
+      }
+      if (custom.size) {
+        const reset = el("button", "demo__reset", `Remove the ${custom.size} word${custom.size > 1 ? "s" : ""} you added`);
+        reset.type = "button";
+        reset.addEventListener("click", () => { custom.clear(); compile(); run(); });
+        unknownEl.appendChild(reset);
+      }
+
+      countsEl.innerHTML = dims.map((d) => `<li class="dim-${d.id}"><i aria-hidden="true"></i><span class="demo__dim">${esc(d.label)} <span lang="zh-Hans">${esc(d.zh)}</span></span><b>${tally[d.id]}</b>` +
+        (found[d.id].length ? `<small>${found[d.id].map(esc).join(" · ")}</small>` : "") + `</li>`).join("");
     }
 
-    input.addEventListener("input", run);
+    input.addEventListener("input", () => { pending = null; run(); });
     document.querySelectorAll("[data-example]").forEach((b) => b.addEventListener("click", () => {
       input.value = b.dataset.example === "clear" ? "" : EXAMPLES[b.dataset.example];
+      pending = null;
       run();
       input.focus({ preventScroll: true });
     }));
@@ -588,7 +863,7 @@
   }
 
   const start = () => {
-    [buildMigration, buildNetwork, buildMacro, buildMined, buildDemo].forEach((fn) => {
+    [buildMigration, buildNetwork, buildMacro, buildShift, buildMined, buildDemo].forEach((fn) => {
       try { fn(); } catch (err) { console.error(fn.name, err); }
     });
   };

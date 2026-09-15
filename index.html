@@ -270,11 +270,12 @@
 
   <section class="analysis" id="analysis" aria-labelledby="analysis-title">
     <h2 id="analysis-title">How national change shaped one family</h2>
-    <p class="section-sub">China’s urban share and farm employment, from national statistics, against the share of the six Li siblings living in a town or city.</p>
+    <p class="section-sub">Two national lines from official statistics, and one family line: out of my grandfather and his five brothers and sisters, how many lived in a town or city in each year.</p>
     <figure class="macro">
       <div class="macro__chart" id="macro-chart"></div>
       <figcaption>National figures: National Bureau of Statistics of China, selected years. Sibling line: computed from the residence records on this site, several of which are approximate; it ends in 1995, where the account stops recording the siblings.</figcaption>
     </figure>
+    <div class="macro-read" id="macro-read"></div>
     <details class="table-view">
       <summary>Show the chart data as a table</summary>
       <div class="table-scroll"><table id="macro-table"></table></div>
@@ -306,8 +307,29 @@
   </section>
 
   <section class="words" id="words" aria-labelledby="words-title">
-    <h2 id="words-title">What each generation fears, relies on, and moves for</h2>
-    <p class="section-sub">Choose a generation to see its keywords in four dimensions: fear and risk, mobility, migration, and historical change, each with its count from NLP text mining. Almost everyone in generation 1 has died, so that generation could not be interviewed and is not included.</p>
+    <h2 id="words-title">What each generation talks about, and what changed</h2>
+    <p class="section-sub">Keyword counts from interviews with generations 2, 3 and 4. Almost everyone in generation 1 has died, so that generation could not be interviewed and is not included.</p>
+
+    <h3 class="nlp__title">Topics rising and falling</h3>
+    <p class="section-sub nlp__sub">The keywords are grouped into ten themes. In each generation the themes are ranked by how often their words come up per 10,000 words of interview. A line that falls is a topic losing its place; a line that rises is a new concern. Select a theme to see its words in each generation.</p>
+    <div class="shift">
+      <div class="shift__themes" id="shift-themes" role="group" aria-label="Themes"></div>
+      <div class="shift__layout">
+        <div class="shift__chart chart-scroll" id="shift-chart"></div>
+        <aside class="shift__detail" id="shift-detail" aria-live="polite"></aside>
+      </div>
+      <p class="footnote" id="shift-note"></p>
+      <details class="table-view">
+        <summary>Show theme ranks as a table</summary>
+        <div class="table-scroll"><table id="shift-table"></table></div>
+      </details>
+    </div>
+    <div class="shift__reading prose">
+      <p>Read from inside one family, the national turning points show up as changes in what people talk about. Class and land, at the centre of my grandfather’s story, are not among his children’s or grandchildren’s keywords. The city takes their place for the generation born in a steel town, and going abroad for the generation that left. Schooling is the thread that holds, but its words change from 读书, studying, to 高考, the entrance exam, to 申请, applications.</p>
+    </div>
+
+    <h3 class="nlp__title">Inside one generation</h3>
+    <p class="section-sub nlp__sub">Choose a generation to see its keywords in four dimensions: fear and risk, mobility, migration, and historical change.</p>
     <div class="tabs" id="mined-tabs" role="tablist" aria-label="Generation"></div>
     <div class="mined-grid" id="mined" role="tabpanel"></div>
     <p class="footnote" id="mined-meta"></p>
@@ -320,11 +342,11 @@
         <li><b>Segment</b><span>jieba splits Chinese text into words, with every codebook term added to its dictionary so terms stay whole.</span></li>
         <li><b>Match</b><span>Each word is checked against the four-dimension codebook.</span></li>
         <li><b>Count</b><span>Matches are tallied by generation and dimension.</span></li>
-        <li><b>Compare</b><span>Counts are set side by side across generations, as in the chart above.</span></li>
+        <li><b>Compare</b><span>Keywords are grouped into themes and ranked within each generation, as in the chart above.</span></li>
       </ol>
 
       <h3 class="nlp__title">Try the method</h3>
-      <p class="section-sub nlp__sub">Type or paste text in English or Chinese. Codebook keywords are marked as you type, by dimension. This runs in your browser with dictionary matching, the same codebook step the analysis uses.</p>
+      <p class="section-sub nlp__sub">Type or paste text in English or Chinese. The page splits it into words, marks the keywords it knows by dimension, and lists the words it does not know. Besides the codebook, the demo knows common variants, such as 搬到 for 搬家 (moving), and place names. Select an unknown word to add it to a dimension. Everything runs in your browser.</p>
       <div class="demo">
         <div class="demo__input">
           <label for="demo-text">Text to analyse</label>
@@ -334,12 +356,14 @@
             <button type="button" class="chip" data-example="g2">Sample 1</button>
             <button type="button" class="chip" data-example="g3">Sample 2</button>
             <button type="button" class="chip" data-example="g4">Sample 3</button>
+            <button type="button" class="chip" data-example="en">English</button>
             <button type="button" class="chip" data-example="clear">Clear</button>
           </div>
         </div>
         <div class="demo__output">
           <p class="demo__label">Marked keywords</p>
           <div class="demo__marked" id="demo-marked" aria-live="polite"></div>
+          <div class="demo__unknown" id="demo-unknown"></div>
           <ul class="demo__counts" id="demo-counts"></ul>
         </div>
       </div>
